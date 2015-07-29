@@ -1,0 +1,11 @@
+# GLOBAL
+
+*.pyc
+data/
+static/uploads
+*.log
+*.swp
+*~
+.parents
+.DS_Store
+
