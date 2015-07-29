@@ -1,0 +1,38 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <th>ID</th>
+        <th>创建时间</th>
+        <th>用户</th>
+        <th>公司</th>
+        <th>类型</th>
+        <th>总价</th>
+        <th>状态</th>
+        <th>付款时间</th>
+    </tr>
+    $for i in privData['PAYMENTS_LIST']:
+    <tr> 
+        <td align="center">$:i["id"]</td>
+        <td align="center">$:i["created_time"]</td>
+        <td align="center">$:i["owner"]</td>
+        <td align="center">$:i["group_name"]</td>
+        <td align="center">$:privData['GROUP_PRICE_TYPES'][i["type"]]</td>
+        <td align="center">$:i["total_fee"]</td>
+        <td align="center">$:i["trade_status"]</td>
+        <td align="center">$:i["pay_time"]</td>
+    </tr>
+</table>
+
+<nav class="navigation">
+    $:privData['PAGE_STRING']
+</nav>
+
+<div style="clear: both;"></div>
+</div>
+</body></html>

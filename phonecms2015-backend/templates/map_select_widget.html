@@ -1,0 +1,21 @@
+$def with (privData)
+<!-- used with jquery.js and amp.js -->
+<div class="lnglat_select_widget" style="position:relative;width:700px;height:500px;overflow:auto">
+    地址: <input id="address" name="address" type="text" 
+    $if privData.has_key('CURRENT_OBJECT'):
+        value="$:privData['CURRENT_OBJECT'].address"
+/>
+    <input type="button" id="show_marker" value="显示位置"></input>
+    <p></p>
+    经度: <input id="longitude" name="longitude" type="text" 
+    $if privData.has_key('CURRENT_OBJECT'):
+        value="$:privData['CURRENT_OBJECT'].longitude"
+/>
+    <p></p>
+    纬度: <input id="latitude" name="latitude" type="text" 
+    $if privData.has_key('CURRENT_OBJECT'):
+        value="$:privData['CURRENT_OBJECT'].latitude"
+/>
+    <p></p>
+    <div class="map" id="admin_map" style="margin:10px; min-height:500px;">xxx</div>
+</div>

@@ -1,0 +1,228 @@
+$def with (privData)
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>编辑产品</h2>
+<form action="$makeUrl('/admin/products/update')" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">* 产品分类:</td>
+            <td width="608" scope="col">
+                <SELECT  name="category" id="category">
+                    $for item in privData['CATEGORIES_LIST']:
+                    <option value="$:item.id"
+                    $if item.id == privData['CURRENT_OBJECT'].category.id:
+                        selected="selected"
+                    >$:item.name</option>
+                </SELECT>
+                <input type="button" style="float:right" id="reload_category" value="刷新"></input>
+                <b style="float:right">&nbsp;|&nbsp;</b>
+                <a href="/admin/categories/add" style="float:right" target="_blank">新增</a>
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">* 名称:</td>
+            <td width="608" scope="col"><input name="name" type="text" value="$privData['CURRENT_OBJECT'].name"/></td>
+        </tr>
+        <tr>
+        <td width="100" scope="col">* 图片:</td>
+            <td width="608" scope="col">
+                $:privData['render'].thumbnail_select_widget(privData)
+             </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">* 价格:</td>
+            <td width="608" scope="col"><input name="price" type="text" value="$privData['CURRENT_OBJECT'].price"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">* 折扣价格:</td>
+            <td width="608" scope="col"><input name="discount" type="text" value="$privData['CURRENT_OBJECT'].discount"/></td>
+        </tr>
+        <tr>
+           <td width="100" scope="col">* 所属公司:</td>
+           <td width="608" scope="col">
+                <SELECT  name="group" id="group">
+                    $for item in privData['GROUPS_LIST']:
+                    <option value="$:item.id"
+                    $if item.id == privData['CURRENT_OBJECT'].group.id:
+                        selected ="selected"
+                    >$:item.name</option>
+                </SELECT>
+        </tr>
+ 
+        <tr>
+            <td width="100" scope="col">描述:</td>
+            <td colspan="1" scope="col">
+                <textarea rows="10" cols="5" name="desc" id="desc">$privData['CURRENT_OBJECT'].description</textarea>
+                    <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+                    <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+                    <script type="text/javascript">
+                        var instance1 = new TINY.editor.edit('editor1',{
+                            id:'desc',
+                            width:654,
+                            height:175,
+                            cssclass:'contentls',
+                            controlclass:'tecontrol',
+                            rowclass:'teheader',
+                            dividerclass:'tedivider',
+                            controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                                'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                                'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                            footer:true,
+                            fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                            xhtml:true,
+                            uploadexc:"$makeUrl('/admin/upload')",
+                            bodyid:'editor',
+                            footerclass:'tefooter',
+                            toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                            resize:{cssclass:'resize'}
+                            });
+                    </script>
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">公司区域:</td>
+            <td width="608" scope="col"><input name="regions" type="text" value="$privData['CURRENT_OBJECT'].regions"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">服务模式:</td>
+            <td width="608" scope="col"><input name="service_modes" type="text" value="$privData['CURRENT_OBJECT'].service_modes"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">联系人:</td>
+            <td width="608" scope="col"><input name="contact" type="text" value="$privData['CURRENT_OBJECT'].contact"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">联系电话(座机):</td>
+            <td width="608" scope="col"><input name="phoneno" type="text" value="$privData['CURRENT_OBJECT'].phoneno"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">联系电话(手机):</td>
+            <td width="608" scope="col"><input name="cellphone" type="text" value="$privData['CURRENT_OBJECT'].cellphone"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">传真:</td>
+            <td width="608" scope="col"><input name="faxno" type="text" value="$privData['CURRENT_OBJECT'].faxno"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">邮编:</td>
+            <td width="608" scope="col"><input name="postcode" type="text" value="$privData['CURRENT_OBJECT'].postcode"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">特长:</td>
+            <td width="608" scope="col"><input name="specials" type="text" value="$privData['CURRENT_OBJECT'].specials"/></td>
+        </tr>
+            <td width="100" scope="col">* 滚动图片相册:</td>
+            <td width="608" scope="col">
+                <SELECT  name="swipeshow_album" id="swipeshow_album">
+                    $for item in privData['ALBUMS_LIST']:
+                    <option value="$:item.id"
+                    $if item.id == privData['CURRENT_OBJECT'].swipeshow_album.id:
+                        selected="selected"
+                    >$:item.name</option>
+                </SELECT>
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">* 产品相册:</td>
+            <td width="608" scope="col">
+                <SELECT  name="products_album" id="products_album">
+                    $for item in privData['ALBUMS_LIST']:
+                    <option value="$:item.id"
+                    $if item.id == privData['CURRENT_OBJECT'].products_album.id:
+                        selected="selected"
+                    >$:item.name</option>
+                </SELECT>
+            </td>
+        </tr>
+        <tr >
+            <td width="100" scope="col"><a href="#1" onclick="omap.style.display='none';">隐</a>/<a href="#1" onclick="omap.style.display='';">显示</a>地图:</td>
+            <td colspan="1" scope="col" id="omap" style="display:none">
+                $:privData['render'].map_select_widget(privData)
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">团队介绍:</td>
+            <td colspan="1" scope="col">
+                <textarea rows="10" cols="5" name="team_description" id="team_description">$privData['CURRENT_OBJECT'].team_description</textarea>
+                    <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+                    <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+                    <script type="text/javascript">
+                        var instance2=new TINY.editor.edit('editor2',{
+                            id:'team_description',
+                            width:654,
+                            height:175,
+                            cssclass:'contentls',
+                            controlclass:'tecontrol',
+                            rowclass:'teheader',
+                            dividerclass:'tedivider',
+                            controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                                'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                                'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                            footer:true,
+                            fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                            xhtml:true,
+                            uploadexc:"$makeUrl('/admin/upload')",
+                            bodyid:'editor2',
+                            footerclass:'tefooter',
+                            toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                            resize:{cssclass:'resize'}
+                            });
+                    </script>
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频名称:</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_name" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频描述:</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_desc" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频地址:</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_url" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频地址(移动):</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_mobile_url" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频码率:</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_rate" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频宽度:</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_width" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频高度:</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_height" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频时长:</td>
+            <td width="608" scope="col"><input value="$privData['CURRENT_OBJECT'].video_duration" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频缩略图:</td>
+                <td width="608" scope="col">
+                    <img width="112" height="70" src="$privData['CURRENT_OBJECT'].video_thumbnail"/>
+                </td>
+        </tr>
+ 
+        <tr>
+            <td colspan="2" scope="col">
+            <input name="id" type="hidden" value="$:privData['CURRENT_OBJECT'].id"/>
+            <input type="submit" name="submit" value="保存" id="submits" onmouseover="instance1.post();instance2.post();" />
+
+            </td>
+        </tr>
+    </table>     
+</form>
+</body>
+</html>
+

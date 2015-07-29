@@ -1,0 +1,16 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+欢迎你<hr />
+你的IP:$:privData['CLIENT_IP']<hr />
+服务器IP:$:privData['SERVER_IP']<hr />
+User Agent:$:privData['USER_AGENT']<hr />
+当前时间:$:privData['DATE']<hr />
+
+<div style="clear: both;"></div>
+</div>
+</body></html>

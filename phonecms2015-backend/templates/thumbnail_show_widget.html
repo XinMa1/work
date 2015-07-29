@@ -1,0 +1,28 @@
+$def with (privData)
+<!-- used with jquery.js and thumbnail.select.js  and common.css -->
+<div class="thumbnail_show_widget">
+    <div id="thumbnail_list" class="show thumbnail_list">
+        <SELECT  id="img_album" name="album">
+            $for k, v in privData['ALBUMS_LIST'].items():
+            <option value="$:k"
+            $if k == privData['CURRENT_ALBUM']:
+                selected="selected"
+            >$:v</option>
+        </SELECT>
+        <p>&nbsp;</p>
+
+        $for album, imgList in privData['IMG_ALBUMS_LIST'].items():
+
+        <div id="thumbnail_list_$:album"
+            $if album != privData['CURRENT_ALBUM']:
+                class="hidden"
+        >
+            $ i = 0
+            $for k, v in imgList.items():
+                $ i = i+1
+                $if i%3 == 0:
+                    <br/><br/>
+                <img src="$makeUrl('/admin/images/thumbnail',{'id':k})" alt="$:v"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+$def with (privData)
+<div id="bodyDiv">
+<div>
+<ul id="sddm">
+    <li>
+        <a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">导航菜单</a>
+        <div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin')">&nbsp;&nbsp;管理首页&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/logout')" onclick="return confirm('确认退出？')">&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
+        </div>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">分类管理</a>
+        <div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/categories')">&nbsp;&nbsp;分类列表&nbsp;&nbsp;</a>
+        </div>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m3')" onmouseout="mclosetime()">企业管理</a>
+        <div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/groups')">&nbsp;&nbsp;公司列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/groups/comments')">&nbsp;&nbsp;评论列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/groups/favorites')">&nbsp;&nbsp;收藏列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/groups/ranklist')">&nbsp;&nbsp;评分列表&nbsp;&nbsp;</a>
+        </div>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m4')" onmouseout="mclosetime()">产品管理</a>
+        <div id="m4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/products')">&nbsp;&nbsp;产品列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/products/comments')">&nbsp;&nbsp;评论列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/products/favorites')">&nbsp;&nbsp;收藏列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/products/ranklist')">&nbsp;&nbsp;评分列表&nbsp;&nbsp;</a>
+        </div>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m6')" onmouseout="mclosetime()">媒体管理</a>
+        <div id="m6" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/albums')">&nbsp;&nbsp;专辑列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/images')">&nbsp;&nbsp;图片列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/articles')">&nbsp;&nbsp;文章列表&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/articles/favorites')">&nbsp;&nbsp;收藏文章&nbsp;&nbsp;</a>
+        </div>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m7')" onmouseout="mclosetime()">辅助功能</a>
+        <div id="m7" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/chatrooms')">&nbsp;聊天室列表&nbsp;</a>
+            <a href="$makeUrl('/admin/questions')">&nbsp;Q&A列表&nbsp;</a>
+        </div>
+    </li>
+ 
+    <li>
+        <a href="#" onmouseover="mopen('m8')" onmouseout="mclosetime()">会员管理</a>
+        <div id="m8" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/users')">&nbsp;&nbsp;会员列表&nbsp;&nbsp;</a>
+        </div>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m9')" onmouseout="mclosetime()">交易管理</a>
+        <div id="m9" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/transactions/grouppaymentslist')">公司交易列表</a>
+            <a href="$makeUrl('/admin/transactions/productpaymentslist')">产品交易列表</a>
+        </div>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m10')" onmouseout="mclosetime()">系统管理</a>
+        <div id="m10" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/about')">&nbsp;&nbsp;版权管理&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/install/install')" onclick="return confirm('确认安装？')">&nbsp;&nbsp;系统安装&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/install/upgrade')" onclick="return confirm('确认升级？')">&nbsp;&nbsp;系统升级&nbsp;&nbsp;</a>
+        </div>
+    </li>
+</ul>
+
+<div style="clear:both;"></div>
+</div>
