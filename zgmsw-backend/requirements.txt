@@ -1,5 +1,0 @@
-web.py
-python-magic
-peewee
-PIL
-flup
