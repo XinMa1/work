@@ -3,4 +3,4 @@ python-magic
 peewee
 PIL
 flup
-master: 修改
+xiaowang  修改
