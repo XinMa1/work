@@ -3,4 +3,3 @@ python-magic
 peewee
 PIL
 flup
-master 分支上修改的文件

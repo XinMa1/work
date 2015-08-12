@@ -1,0 +1,37 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>课程评论管理</h2>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <th>ID</th>
+        <th>评论作者</th>
+        <th>评论课程</th>
+        <th>评论内容</th>
+        <th>评论时间</th>
+        <th>评论管理</th>
+    </tr>
+    $for i in privData['COURSECOMM_LIST']:
+    <tr> 
+        <td align="center">$:i.id</td> 
+        <td align="center">$:i.owner.name</td>
+        <td align="center">$:i.course.name</td> 
+        <td align="center">$:i.content</td>
+        <td align="center">$str(i.created_time)[:10]</td>
+        <td align="center">
+            <a href="$makeUrl('/admin/courses/commdelete',{'id':i.id})" >删除</a>
+        </td>
+    </tr>
+</table>
+
+<nav class="navigation">
+    $:privData['PAGE_STRING']
+</nav>
+
+<div style="clear: both;"></div>
+</div>
+</body></html>

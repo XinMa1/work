@@ -1,0 +1,31 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+<h2>新增专辑</h2>
+<form id="formvalidate" action="$makeUrl('/admin/albums/save')" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">名称:</td>
+            <td width="608" scope="col"><input id="name" name="name" type="text" /></td>
+        </tr>
+
+        <tr>
+            <td width="100" scope="col">描述:</td>
+            <td width="608" scope="col"><input id="desc" name="desc" type="text"  /></td>
+        </tr> 
+
+        <tr>
+            <td colspan="2" scope="col"><input type="submit" name="submit" value="保存" id="submits" /></td>
+        </tr>
+</form>
+
+
+<script src="$makeUrl('/static/admin/admin.validate.js')"></script>
+
+
+
+
+</body></html>

@@ -1,0 +1,155 @@
+$def with (privData)
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>编辑课程</h2>
+<form action="$makeUrl('/admin/courses/update')" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">* 课程分类:</td>
+            <td width="608" scope="col">
+                <SELECT  name="category" id="category">
+                    $for item in privData['CATEGORIES_LIST']:
+                    <option value="$:item.id"
+                    $if item.id == privData['COURSE'].category.id:
+                        selected="selected"
+                    >$:item.name</option>
+                </SELECT>
+                <input type="button" style="float:right" id="reload_category" value="刷新"></input>
+                <b style="float:right">&nbsp;|&nbsp;</b>
+                <a href="/admin/categories/add" style="float:right" target="_blank">新增</a>
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">* 名称:</td>
+            <td width="608" scope="col"><input name="name" type="text" value="$privData['COURSE'].name"/></td>
+        </tr>
+        <tr>
+        <td width="100" scope="col">图片:</td>
+            <td width="608" scope="col">
+                $:privData['render'].thumbnail_select_widget(privData)
+             </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">价格:</td>
+            <td width="608" scope="col"><input name="price" type="text" value="$privData['COURSE'].price"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">折扣价格:</td>
+            <td width="608" scope="col"><input name="discount" type="text" value="$privData['COURSE'].discount"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">课程链接:</td>
+            <td width="608" scope="col"><input name="vedio_url" type="text" value="$privData['COURSE'].video_url"/></td>
+        </tr>
+        <tr>
+           <td width="100" scope="col">是否精品课程:</td>
+           <td width="608" scope="col">
+                <SELECT  name="star" id="star">
+                    $for k,v in privData['ISSTAR_LIST'].items():
+                    <option value="$:k"
+                    $if str(k) == str(privData['COURSE'].is_star):
+                        selected ="selected"
+                    >$:v</option>
+                </SELECT>
+        </tr>
+        <tr>
+           <td width="100" scope="col">所属老师:</td>
+           <td width="608" scope="col">
+                <SELECT  name="group" id="group">
+                    $for item in privData['GROUPS_LIST']:
+                    <option value="$:item.id"
+                    $if item.id == privData['COURSE'].group.id:
+                        selected ="selected"
+                    >$:item.name</option>
+                </SELECT>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频名称:</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_name" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频描述:</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_desc" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频地址:</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_url" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频地址(移动):</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_mobile_url" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频码率:</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_rate" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频宽度:</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_width" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频高度:</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_height" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频时长:</td>
+            <td width="608" scope="col"><input value="$privData['COURSE'].video_duration" disabled="disabled"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">视频缩略图:</td>
+                <td width="608" scope="col">
+                    <img width="112" height="70" src="$privData['COURSE'].video_thumbnail"/>
+                </td>
+        </tr>
+
+        <tr>
+            <td width="100" scope="col">描述:</td>
+            <td colspan="1" scope="col">
+                <textarea rows="10" cols="5" name="desc" id="desc">$privData['COURSE'].description</textarea>
+                    <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+                    <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+                    <script type="text/javascript">
+                        var instance=new TINY.editor.edit('editor',{
+                            id:'desc',
+                            width:654,
+                            height:175,
+                            cssclass:'contentls',
+                            controlclass:'tecontrol',
+                            rowclass:'teheader',
+                            dividerclass:'tedivider',
+                            controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                                'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                                'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                            footer:true,
+                            fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                            xhtml:true,
+                            uploadexc:"$makeUrl('/admin/upload')",
+                            bodyid:'editor',
+                            footerclass:'tefooter',
+                            toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                            resize:{cssclass:'resize'}
+                            });
+                    </script>
+            </td>
+        </tr>
+
+        <tr class="hidden">
+            <td colspan="2" scope="col"><input type="hidden" readonly="readonly" name="last_insert_image" id="last_insert_image" value="0" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" scope="col">
+            <input name="id" type="hidden" value="$:privData['COURSE'].id"/>
+            <input type="submit" name="submit" value="保存" id="submits" onmouseover="instance.post();" />
+
+            </td>
+        </tr>
+    </table>     
+</form>
+</body>
+</html>
+
