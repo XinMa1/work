@@ -1,0 +1,18 @@
+*{padding: 0; margin: 0; font-family: "微软雅黑";}
+li{list-style: none;}
+/*index.html*/
+.mui-bar a span{color: #000;}
+/*gsjj.html*/
+.mui_gsjj_pic{width:100%;margin: 0 auto; overflow: hidden;}
+.mui_gsjj_pic img{width:100%; float: left;}
+.mui_gsjj_pic li{width:25%; float: left;}
+.mui_jj{width:100%; overflow: hidden; margin: 0 auto; border-bottom: 1px solid #ccc;}
+.mui_jj img{max-width: 100px; border-radius: 50%;-webkit-border-radius: 50%; padding: 15px;}
+.mui_jj div.mui_body{margin-top: 18px; font-size: 1em; font-weight:bold;}
+.mui_jj div.mui_body p{margin: 3px 0; font-size: 0.7em; color:#333; font-weight: normal;}
+.mui_jj div.mui_body p:nth-of-type(2){color:#999;}
+.mui_jj div.mui_body p:nth-of-type(2) i{margin-right: 5px; vertical-align:bottom; font-size: 1.7em;}
+.mui_cont{width:92%; margin: 0 auto; overflow: hidden; margin-top:5px ;}
+.mui_cont h4{font-size: 0.8em; font-weight: normal; color:#000; line-height: 1.2em;}
+.mui_cont p{ text-indent: 2em; font-size: 0.7em; letter-spacing: 0.1em; color:#666; }
+.mui_cont p.mui_bold{font-weight: bold;color: #000;line-height: 1.1em;}

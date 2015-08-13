@@ -1,0 +1,149 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+                height: 100%;
+            }
+            .mui_jsd {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_jsd div.mui_jsd_title {
+                padding: 6px 10px;
+                font-size: 0.8em;
+                overflow: hidden;
+            }
+            .mui_jsd .mui_jsd_cont {
+                width;
+                100%;
+                margin: 0 auto;
+                overflow: hidden;
+                background: #FCFBED;
+            }
+            .mui_jsd .mui_jsd_cont .mui-table-view-cell::after {
+                left: 0;
+            }
+            .mui_jsd .mui_jsd_cont li {
+                font-size: 0.8em;
+            }
+            .mui_jsd .mui_jsd_cont .mui-table-view {
+                background: none;
+            }
+            .mui_jsd .mui_jsd_word {
+                width: 100%;
+                overflow: hidden;
+                margin: 0 auto;
+            }
+            .mui_jsd .mui_jsd_word textarea {
+                font-size: 0.7em;
+            }
+            .mui_jsd .mui_jsd_button {
+                width: 60%;
+                overflow: hidden;
+                margin: 0 auto;
+                font-size: 0.9em;
+            }
+            #agree{
+                background: #FF6C00;
+                float: left;
+            }
+            #disagree{
+                background: #5892E0;
+                float: left;
+                margin-left:40% ;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">结算单</h1>
+        </header>
+        <div class="mui_jsd mui-content">
+            <div class="mui_jsd_title">上个月未结账金额：<span>￥$privData['ACCOUNTING'].symwjzje</span>
+            </div>
+            <div class="mui_jsd_cont">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">当月发货明细</a>
+                        <ul class="mui-table-view mui-table-view-chevron">
+                        $for i in privData['OUTGOINGS']:
+                            <li class="mui-table-view-cell">日期：<span>$i.createTime.strftime('%Y-%m-%d')</span>
+                            </li>
+                            <li class="mui-table-view-cell">发货金额：<span>￥$i.money</span>
+                            </li>
+                            <li class="mui-table-view-cell">盘：<span>$i.count</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">当月到账明细</a>
+                        <ul class="mui-table-view mui-table-view-chevron">
+                        $for i in privData['INCOMMINGS']:
+                            <li class="mui-table-view-cell">日期：<span>$i.createTime.strftime('%Y-%m-%d')</span>
+                            </li>
+                            <li class="mui-table-view-cell">来款单位：<span>$i.origin</span>
+                            </li>
+                            <li class="mui-table-view-cell">到账金额：<span>￥$i.money</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">结算明细</a>
+                        <ul class="mui-table-view mui-table-view-chevron">
+                            <li class="mui-table-view-cell">本月发货合计：<span>$privData['ACCOUNTING'].byfhhj</span>
+                            </li>
+                            <li class="mui-table-view-cell">本月到账合计：<span>￥$privData['ACCOUNTING'].bydzhj</span>
+                            </li>
+                            <li class="mui-table-view-cell">月末结存：<span>$privData['ACCOUNTING'].ymjc</span>
+                            </li>
+                            <li class="mui-table-view-cell">本月业务利润：<span>￥$privData['ACCOUNTING'].byywlr</span>
+                            </li>
+                            <li class="mui-table-view-cell">本月开票：<span>$privData['ACCOUNTING'].bykp</span>
+                            </li>
+                            <li class="mui-table-view-cell">本月奖：<span>￥$privData['ACCOUNTING'].byj</span>
+                            </li>
+                            </li>
+                            <li class="mui-table-view-cell">本月扣：<span>￥$privData['ACCOUNTING'].byk</span>
+                            </li>
+                            <li class="mui-table-view-cell">本年发货累计：<span>$privData['ACCOUNTING'].bnfhlj</span>
+                            </li>
+                            <li class="mui-table-view-cell">本年到账累计：<span>$privData['ACCOUNTING'].bndzlj</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="mui_jsd_word">
+            <form action="$makeUrl('/wap/confirm_accountings', {'id': privData['ACCOUNTING'].id})" method="post">
+                <div class="mui_jsd_title">备注</div>
+                <div class="mui-input-row" style="margin: 0 5px;">
+                    <textarea id="remark" name="remark" rows="5"
+                    $if privData['ACCOUNTING'].status == 1:
+                        disabled
+                    >$privData['ACCOUNTING'].remark</textarea>
+                    <input name="id" type="hidden" value="$:privData['ACCOUNTING'].id"/>
+                </div>
+                
+                <div class="mui_jsd_button">
+                    <ul>
+                        <li><button id="agree" type="submit" name="agree" 
+                        $if privData['ACCOUNTING'].status == 1:
+                            disabled
+                        >同意</button></li>
+                        <li><button id="disagree" type="submit" name="disagree" 
+                        $if privData['ACCOUNTING'].status == 1:
+                            disabled
+                        >拒绝</button></li>
+                    </ul>
+                </div>
+            </form>
+            </div>
+    </body>
+
+</html>

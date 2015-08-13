@@ -1,0 +1,59 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+         $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+            }
+            input.xlt-login-kuang{
+                width: 90%;
+                margin-left: 5%;
+                font-size: 15px;
+                padding-right: 5%;
+                margin-bottom: 10px;
+            }
+            input.xlt-login-kuang1{
+                width: 90%;
+                margin-top: 5px;
+                margin-left: 5%;
+                font-size: 15px;
+                padding-right: 5%;
+                margin-bottom: 10px;
+            }
+            .xlt-login-btn {
+                width: 90%;
+                height: 40px;
+                margin-left: 5%;
+                padding-right: 5%;
+                margin-top: 1px;
+                background-color: orange;
+                font-size: 18px;
+                color: white;
+            }
+            .xlt-login-registered {
+                margin-left: 5%;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">登录</h1>
+        </header>
+        <div class="mui-content">
+            <form action="$makeUrl('/wap/signin')" method="POST">
+                <input name="username" placeholder="请输入用户名" class="xlt-login-kuang1" type="text" />
+                <input name="password" placeholder="请输入密码" class="xlt-login-kuang" type="text" />
+                <button id="btn" class="xlt-login-btn">登&nbsp;&nbsp;录</button>
+                <div class="xlt-login-registered">
+                    <a href="register.html">微信登录</a>
+                </div>
+            </form>
+        </div>              
+    </body>
+</html>

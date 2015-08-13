@@ -1,0 +1,119 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+      <$:privData['render'].header(privData)
+        <style>
+            .mui-table-view-cell::after {
+                left: 1px;
+            }
+            .mui_bjd_top {
+                width: 100%;
+                margin: 0 auto;
+                padding: 5px 0;
+                overflow: hidden;
+                background-color: rgb(111, 132, 223);
+            }
+            .mui_bjd_search {
+                width: 80%;
+                margin: 0 auto;
+            }
+            input[type="search"] {
+                background: #fff;
+                margin: 0;
+            }
+            .mui-search::before {
+                margin-top: -10px;
+            }
+            .mui_bjd {
+                width;
+                100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_bjd li {
+                padding: 7px 10px;
+                overflow: hidden;
+                border-bottom: 1px solid #ccc;
+                position: relative;
+            }
+            .mui_bjd li dl {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                position: relative;
+            }
+            .mui_bjd li dl dt {
+                display: block;
+                font-size: 0.8em;
+            }
+            .mui_bjd li dl dd {
+                display: block;
+                font-size: 0.7em;
+                color: #999;
+            }
+            .mui_bjd li dl dd:nth-of-type(1) {
+                margin-top: 3px;
+            }
+            .mui_bjd li dl dd:nth-of-type(3) {
+                position: absolute;
+                top: 0;
+                right: 0;
+                color: #D84F4F;
+            }
+            #xlt-orderList-home{
+                margin-top: 5px;
+                color: red;
+                font-size: 15px;
+            }
+            .xlt-add {
+                width:100%;
+                height:40px;
+                display:block;
+                float:left;
+                text-align:center;
+                line-height:40px;
+                color:black;
+                background-color:#007AFF;
+                border: 1px solid #007AFF;
+            }
+            .mui-bar-tab{
+             height:40px;
+            }
+            .mui-bar-nav~.mui-content {
+             padding-top:20px;
+           }  
+        </style>
+
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <a id="xlt-orderList-home"  class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/home')">首页</a>
+            <h1 class="mui-title">报价单</h1>
+        </header>
+        <div class="mui-content">
+            <div class="mui_bjd">
+            <ul>
+            $for i in privData['ORDERS_LIST']:
+                $ total = 0
+                $for j in i.products_order:
+                    $ total += j.price*j.count*(1.0+j.ratio)
+                <a href="$makeUrl('/wap/price_sheet_details', {'id': i.id})"><li>
+                    <dl>
+                        <dt>$i.customer</dt>
+                        <dd>日期：$i.created_time.strftime('%Y-%m-%d')</dd>
+                        <dd>价格：￥$total</dd>
+                    </dl>
+                </li></a>
+            </ul>
+            </div>          
+        </div>
+        <nav class="mui-bar mui-bar-tab">
+            <a class="xlt-add"  href="$makeUrl('/wap/add_price_sheet')">
+                新增报价单
+            </a>
+        </nav>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>联系人列表</h2> <a href="$makeUrl('/admin/contacts/add')">新增联系人</a> 
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <th>ID</th>
+        <th>头像</th>
+        <th>手机号</th>
+        <th>用户名</th>
+        <th>管理</th>
+    </tr>
+    $for i in privData['CONTACTS_LIST']:
+    <tr> 
+        <td align="center"><a href="$makeUrl('/admin/contacts/edit',{'id':i.id})" >$:i.id</a></td>
+        <td align="center">
+          <a href="$imageUrl(i.avatur.uuid)">
+              <img src="$makeUrl('/admin/images/thumbnail',{'id':i.avatur.id})"/>
+          </a>
+       </td>
+        <td align="center"><a href="$makeUrl('/admin/contacts/edit',{'id':i.id})" >$:i.cellphone</a></td>
+        <td align="center"><a href="$makeUrl('/admin/contacts/edit',{'id':i.id})" >$:i.name</a></td>
+        <td align="center">
+            <a href="$makeUrl('/admin/contacts/edit',{'id':i.id})" >编辑</a> |
+            <a href="$makeUrl('/admin/contacts/delete',{'id':i.id})" onclick="return confirm('确认删除？')">删除</a>
+        </td>
+    </tr>
+</table>
+
+<nav class="navigation">
+    $:privData['PAGE_STRING']
+</nav>
+
+<div style="clear: both;"></div>
+</div>
+</body></html>

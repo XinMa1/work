@@ -1,0 +1,320 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+         $:privData['render'].header(privData)
+         <style>
+            .mui-table-view-cell::after {
+                left: 1px;
+            }
+            p {
+                margin-bottom: 0;
+            }
+            .mui_bjd7_top_but {
+                font-size: 0.8em;
+                display: block;
+                margin-top: 8px;
+                padding: 5px 12px;
+            }
+            .mui_bjd7_top_but:active {
+                background: #ccc;
+            }
+            .mui_bjd7_main {
+                margin: 0 auto;
+                overflow: hidden;
+                width: 100%;
+                margin-bottom: 51px;
+            }
+            .mui_bjd7_top {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                padding: 10px;
+                border-bottom: 2px solid #0F39B1;
+            }
+            .mui_bjd7_top li{
+             
+            }
+            .mui_bjd7_top li:nth-of-type(1) {
+                float: left;
+                font-size: 0.8em;
+                padding: 5px 0;
+                width: 100%;
+                font-size: 18px;
+            }
+            .mui_bjd7_top input {
+                width: 75%;
+                font-size: 1em;
+                border: none 0;
+                border-bottom: 1px solid #ccc;
+            }
+            .mui_bjd7_cont {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_bjd7_cont li.mui_bjd7_cont_li {
+                overflow: hidden;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body {
+                width: 100%;
+                margin: 0 auto;
+            }
+            .mui_bjd7_cont .mui-checkbox input[type="checkbox"] {
+                top: 135px;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li {
+                padding: 8px 8px;
+                border-bottom: 1px solid #ccc;
+                overflow: hidden;
+                border-left: 1px solid #ccc;
+                letter-spacing: 0.1em;
+                font-size: 0.8em;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:nth-of-type(3) p:nth-of-type(1) {
+                display: block;
+                color: #000;
+                float: left;
+                overflow: hidden;
+                padding: 5px 0;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:nth-of-type(3) span.mui_sspan {
+                display: block;
+                width: 70%;
+                border: 1px solid #ccc;
+                overflow: hidden;
+                padding: 5px;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:nth-of-type(3) p.mui_ssspan {
+                margin-bottom: 0px;
+                padding: 0;
+                display: block;
+                color: #000;
+            }
+            .mui_bjd7_cont .mui_bjd7_cont_li dl {
+                position: absolute;
+                display: block;
+                top: 45%;
+                left: 10px;
+                overflow: hidden;
+                z-index: 999;
+            }
+            .mui_bjd7_cont .mui_bjd7_cont_li dl i {
+                font-size: 2.8em;
+            }
+            .mui_bjd7_cont .mui_bjd7_cont_li dl:active {
+                color: blue;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select {
+                width: 70%;
+                display: none;
+                border-radius: 5px;
+                position: absolute;
+                border: 1px solid #ccc;
+                -webkit-border-radius: 5px;
+                background: #fff;
+                z-index: 99999;
+                top: 10%;
+                margin: 0 15%;
+                overflow: hidden;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select li {
+                border-bottom: 1px solid #ccc;
+                height: 45px;
+                line-height: 45px;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select li:nth-of-type(3) {
+                text-align: center;
+                border-bottom: none;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select .mui-radio input[type="radio"] {
+                top: 7px;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select li:nth-of-type(3):active {
+                background: #ccc;
+                border-radius: 0 0 5px 5px;
+                -webkit-border-radius: 0 0 5px 5px;
+            }
+            #mui_bjd7 {
+                z-index: 9998;
+                display: none;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, .6);
+                position: fixed;
+                bottom: 0;
+            }
+            .mui_bjd7_ul2 {
+                display: none;
+            }
+            span.mui-btn.mui-btn-danger,
+            span.mui-btn.mui-btn-success {
+                width: 100%;
+                top: 0px;
+                border-radius: 0px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                font-size: 16px;
+                font-weight: bolder;
+            }
+            #xlt-priceSheetD-home {
+                margin-top: 5px;
+                color: red;
+                font-size: 15px;
+            }
+            .xlt-price-detail-total {
+                padding: 8px 8px;
+                font-size: 0.8em;
+                border-bottom: 1px solid #ccc;
+            }
+            .mui-checkbox.mui-left.mui_bjd7_cont_li label {
+                border-bottom: 1px solid #ccc;
+            }
+            .mui_bjd7_xj {
+                color: red;
+            }
+            .xlt-bianji,
+            .xlt-shanchu,
+            .xlt-daochu {
+                width: 33.3%;
+                height: 40px;
+                display: block;
+                float: left;
+                text-align: center;
+                line-height: 35px;
+                color: black;
+            }
+            .xlt-bianji {
+                background-color: #4cd964;
+                border: 1px solid #4cd964
+            }
+            .xlt-shanchu {
+                background-color: #dd524d;
+                border: 1px solid #dd524d;
+            }
+            .xlt-daochu {
+                background-color: #2a5caa;
+                border: 1px solid #2a5caa;
+            }
+            .mui-bar-tab {
+                height: 40px;
+            }
+            #xlt-name-red {} .xlt-each-line li {
+                width: 50%;
+            }
+            .xlt-each-line li:nth-child(1) {
+                float: left;
+            }
+            table {
+                width: 100%;
+                border: none;
+            }
+            th {
+                border-right:1px solid #ccc;
+                border-color: #ccc;
+                font-weight: lighter;
+                text-align:center;
+                border-left:1px solid #ccc;
+                border-top:1px solid #ccc;
+                border-bottom:1px solid #ccc;
+            }
+            td {
+                border-left: 1px solid #ccc;
+                border-color: #ccc;
+                text-align:center;
+                border-left:1px solid #ccc;
+                border-top:1px solid #ccc;
+                border-bottom:1px solid #ccc;
+            }
+          </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <a id="xlt-priceSheetD-home" class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/home')">首页</a>
+            <h1 class="mui-title">报价单详情</h1>
+        </header>
+        <div class="mui_bjd7_main mui-content">
+            <div class="mui_bjd7_top">
+                <ul>
+                    <li>
+                        <span>询价方：</span>
+                        <span>$privData['ORDER'].customer</span>
+                    </li>
+                    <li>
+                        <span>合&nbsp;&nbsp;&nbsp;计：</span> ￥
+                        <span class="" id="total"></span>
+                    </li>
+                </ul>
+            </div>
+            $ total = 0 
+            $ eprice = 0
+            <div class="mui_bjd7_cont">
+                <ul>
+                 $for i in privData['DETAILS']: 
+                    $ eprice = i.price*i.count*(1.0+i.ratio) 
+                    $ total += eprice
+                    <li class="mui-checkbox mui-left mui_bjd7_cont_li">
+                        <dl>
+                            <i class="mui-icon mui-icon-paperplane"></i>
+                        </dl>
+                        <label>
+                            <div class="mui_bjd7_body">
+                                <table>
+                                    <tr>
+                                        <th>型&nbsp;&nbsp;&nbsp;号</th>
+                                        <td style="border-right:none;" colspan="3">$i.name</td>
+                                    </tr>
+                                    <tr>
+                                        <th>价&nbsp;&nbsp;&nbsp;格</th>
+                                        <td>$i.price</td>
+                                        <th>数量</th>
+                                        <td>$i.count</td>
+                                    </tr>
+                                    <tr>
+                                        <th>利润率</th>
+                                        $ ratio = i.ratio*100
+                                        <td>$ratio%</td>
+                                        <th>总价</th>
+                                        <td>$eprice</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <ul class="xlt-price-detail-total" style="display:none;">
+                <li>
+                    <span>合&nbsp;&nbsp;&nbsp;计：</span> ￥
+                    <input class="mui_bjd7_xj" id="htotal"value="$total"/>
+                </li>
+            </ul>
+            <script>
+              function setValue(){
+                 var hvalue= document.getElementById('htotal').value;
+                 document.getElementById('total').innerHTML=hvalue;
+              }
+             setTimeout("setValue()",100); //隔1000毫秒就执行一次函数
+            </script>
+        </div>
+        <nav class="mui-bar mui-bar-tab">
+            <a class="xlt-bianji"  href="$makeUrl('/wap/edit_price_sheet', {'id':privData['ORDER'].id})">
+                编&nbsp;&nbsp;辑
+            </a>
+            <a class="xlt-shanchu" id="shanchu" href="$makeUrl('/wap/delete_price_sheet', {'id': privData['ORDER'].id})" onclick="return confirm('确认删除？')">
+                删&nbsp;&nbsp;除
+            </a>
+            <a class="xlt-daochu" href="$makeUrl('/wap/export_price_sheet', {'id': privData['ORDER'].id})">
+                导&nbsp;&nbsp;出
+            </a>
+        </nav>
+    </body>
+</html>

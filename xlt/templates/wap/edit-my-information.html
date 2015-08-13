@@ -1,0 +1,247 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+            }
+
+            .xlt-edit-input{
+                width: 60%;
+                float: right;
+                margin-top: -45px;
+                margin-right: 16px;
+                border: 0px solid !important;
+            }
+            .xlt-edit-view{
+                margin-left: -10px;
+            } 
+            .box.xlt-edit-nv{
+                float: left;
+                margin-top: 8px;
+            }
+            .xlt-myinfo-font-size{
+                font-size: 17px;
+            }
+            .xlt-userinfo-icon-lable{
+                margin-left: 30px;
+            } 
+            .xlt-userinfo-userphoto{
+                margin-left: 30px;
+                margin-top: 50px;
+            }
+            .xlt-myinfo-show-row label{
+                margin-left: 22px;
+                margin-right: 35px;
+            } 
+            .xlt-myinfo-icon{
+                height: 90px;
+                list-style: none;
+                margin-left: 2px;
+                border-bottom:1px solid #95C2FD;
+            }
+            .xlt-myinfo-icon span img{
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-left: 25px;
+                margin-top: -3px;
+            }
+            .xlt-myinfo-icon label{
+                margin-left: 20px;
+                float: left;
+                margin-top: 25px;
+            }
+            .xlt-my-info-show-row{
+                border-bottom:1px solid #95C2FD;
+                height: 50px;
+                list-style: none;
+                margin-left: 2px;
+                width: 100%;
+            }
+            .xlt-myinfo-show-row{
+                border-bottom:1px solid #95C2FD;
+                height: 50px;
+                list-style: none;
+                margin-left: 2px;
+                width: 100%;
+            }
+            .xlt-myinfo-show-row span,label{
+                line-height: 50px;
+            } 
+            .xlt-myinfo-first-card{
+                margin-bottom: 10px;
+            } 
+            .xlt-myinfo-last-row{
+                width: 100%;
+                
+            }
+            .xlt-myinfo-last-row textarea{
+                margin-left: 50px;
+                margin-right: 10px;
+                padding: 1px 1px;
+                width: 63%;
+                border: none;
+                float: right;
+                margin-top: -35px;
+                text-indent:20px;
+            }
+
+            .xlt-myinfo-last-row  span{
+                margin-left: 0px;
+                line-height: 30px;
+            }
+            .xlt-myinfo-last-row label{
+                margin-left: 10px;
+                line-height: 50px;
+                margin-left: 10px;
+                float: left;
+            }
+            .xlt-info-one{
+                width: 20%;
+            }
+            .xlt-info-two{
+                float: right;
+                margin-left: 10px;
+                margin-right: 10px;
+                padding: 1px 1px;
+                width: 60%;
+                border: none;
+            }
+            .xlt-myinfo-btnUp{
+                width: 98%;
+                height: 40px;
+                background-color: orange;
+                font-size: 20px;
+                color: white;
+            }
+            .title {
+                margin: 20px 15px 10px;
+                color: #6d6d72;
+                font-size: 15px;
+            }
+            #by_composite {
+                height: 20px;
+            }
+            #logout {
+                width: 97%;
+                margin-left: 5px;
+            }
+            .box {
+                border: 1px solid #C0C0C0;
+                width: 60px;
+                height: 19px;
+                clip: rect(0px, 181px, 18px, 0px);
+            }
+            select {
+                position: relative;
+                left: -2px;
+                top: -2px;
+                font-size: 14px;
+                width: 80px;
+                line-height: 14px;
+                border: 0px;
+                color: #909993;
+            }
+            #xlt-userinfo-userphoto-img{
+                width: 80px;
+                height: 80px;
+                margin-top: 5px;
+                margin-left: 20px;
+                border-radius: 50%;
+            }
+            #user-phone,#name,#email,#address{
+             width:60%;
+             float: left;
+             margin-bottom: 2px;
+             margin-top: 5px;
+            }
+            #phone-label,#job-label,#name-label,#xlt-user-info-gender-label,#email-label,#address-label{
+                float: left;
+                margin-left: 22px;
+                margin-right: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">编辑资料</h1>
+        </header>
+        <div class="mui-content xlt-myinfo-font-size">
+            <form action="$makeUrl('/wap/save_my_information')" method="POST" enctype="multipart/form-data">
+            <input name="userid" value='$:privData['USER'].id' type='text' style="display:none;"/>
+            <div class="mui-card xlt-myinfo-first-card">
+                <ul class="xlt-info-table-top">
+                    <li class="xlt-myinfo-show-row">
+                        <label id="phone-label">手&nbsp;&nbsp;&nbsp;&nbsp;机：</label>
+                        <input id="user-phone"  name='cellphone' type='text' value='$:privData['USER'].cellphone'/>
+                    </li>
+                    <li class="xlt-myinfo-show-row">
+                        <label id="name-label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+                        <input id="name" name="name" type="text" class="mui-input-clear "  value="$:privData['USER'].name">
+                    </li>
+                    <li class="xlt-myinfo-show-row">
+                        <label id="name-label">职&nbsp;&nbsp;&nbsp;&nbsp;位：</label>
+                        <input id="name" name="job" type="text" class="mui-input-clear "  value="$:privData['USER'].job">
+                    </li>
+                    <li class="xlt-myinfo-icon">
+                        <label class="xlt-userinfo-icon-lable">头&nbsp;&nbsp;&nbsp;&nbsp;像：</label>
+                        <img onclick="getImage(this)" src="data:image/jpeg;base64,$:privData['USER'].avatur.thumbnail" id="xlt-userinfo-userphoto-img">
+						<input style="display:none;" id="imgfile" type="file" accept="image/jpg" capture="camera"  onchange="loadImageFile(this);" name="imgfile">
+                    </li>
+
+                    <li class="xlt-my-info-show-row">
+                        <label id="xlt-user-info-gender-label">性&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+                        <div class="box xlt-edit-nv">
+                            <select name="gender" id="gender" hidefocus>
+                                <option value='0'>女</option>                                   
+                                <option value='1'>男</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="xlt-myinfo-show-row">
+                        <label id="email-label">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+                        <input name="email"  id="email" type="text" class="mui-input-clear " placeholder="$:privData['USER'].email" value="$:privData['USER'].email">
+                    </li>
+                    <li class="xlt-myinfo-last-row">
+                        <label id="address-label">地&nbsp;&nbsp;&nbsp;&nbsp;址：</label>
+                        <input name="address" type="text"  rows="6"  id="address" value="$:privData['USER'].address"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="mui-content-padded">
+                <div class="mui-button-row">
+                    <button class="xlt-myinfo-btnUp" id='confirm' type="submit" class="mui-btn"  style="padding: 5px 20px;">确认修改</button>
+                </div>
+            </div>
+         </form>
+        </div> 
+<script type="text/javascript">
+var temp;
+function getImage(img){
+	temp=img;
+	document.getElementById("imgfile").click();
+}
+var oFReader = new FileReader() 
+
+oFReader.onload = function (oFREvent) {
+  temp.src = oFREvent.target.result;
+  temp="";
+};
+
+function loadImageFile(file) {
+  if (file.files.length === 0) { return; }
+  var oFile = file.files[0];
+  
+  oFReader.readAsDataURL(oFile);
+}
+</script>
+
+
+    </body>
+
+</html>

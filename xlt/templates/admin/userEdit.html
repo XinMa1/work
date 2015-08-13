@@ -1,0 +1,143 @@
+$def with (privData)
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>编辑会员信息</h2>
+<form action="$makeUrl('/admin/users/modify')" id="useredit" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">头像:</td>
+            <td width="608" scope="col">
+                $:privData['render'].thumbnail_select_widget(privData)
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">* 用户名:</td>
+            <td width="608" scope="col"><input id="name" name="name" type="text"  value="$:privData['USER_INFO'].name"/></td>
+        </tr>
+         <tr>
+            <td width="100" scope="col">手机:</td>
+            <td width="608" scope="col"><input id="cellphone" name="cellphone" type="text"  value="$:privData['USER_INFO'].cellphone"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">微信:</td>
+            <td width="608" scope="col"><input id="email" name="weixin" type="text" value="$:privData['USER_INFO'].weixin" /></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">职位:</td>
+            <td width="608" scope="col"><input id="job" name="job" type="text" value="$:privData['USER_INFO'].job" /></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">地址:</td>
+            <td width="608" scope="col"><input id="email" name="address" type="text" value="$:privData['USER_INFO'].address" /></td>
+        </tr>      
+        <tr>
+            <td width="100" scope="col">邮箱地址:</td>
+            <td width="608" scope="col"><input id="email" name="email" type="text" value="$:privData['USER_INFO'].email" /></td>
+        </tr>
+        <tr>
+            <td scope="col">性别:</td>
+            <td scope="col">
+                $for k,v in privData['GENDER_LIST'].items():
+                    <input type="radio" value="$:k" name="gender"
+                    $if k == privData['USER_INFO'].gender:
+                        checked="checked"
+                    >
+                    $:v
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" scope="col">
+                <textarea rows="10" cols="5" name="desc" id="desc">$:privData['USER_INFO'].description</textarea>
+            <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+            <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+            <script type="text/javascript">
+                var instance=new TINY.editor.edit('editor',{
+                    id:'desc',
+                    width:740,
+                    height:175,
+                    cssclass:'contentls',
+                    controlclass:'tecontrol',
+                    rowclass:'teheader',
+                    dividerclass:'tedivider',
+                    controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                        'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                    footer:true,
+                    fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                    xhtml:true,
+                    uploadexc:"$makeUrl('/admin/upload')",
+                    bodyid:'editor',
+                    footerclass:'tefooter',
+                    toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                    resize:{cssclass:'resize'}
+                });
+            </script>
+            </td>
+        </tr> 
+        <tr>
+            <td colspan="2" scope="col">
+                <input type="submit" name="submit" value="保存" id="submits" onmouseover="instance.post();" />
+                <input name="id" type="hidden" value="$:privData['USER_INFO'].id"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+(function(){
+	var _j = jQuery.noConflict();
+	_j("#useredit").validate({
+		rules: {
+		    email: {
+			    required:true,
+				email: true
+			},
+			
+			cellphone: {
+				minlength:8
+			},
+			
+			passwd: {
+				minlength: 6
+			},
+			
+			name: {
+				required: true,
+				minlength: 4
+			},
+		},
+		messages: {
+		    email: "请输入有效邮箱地址",
+			
+			cellphone:
+			{
+				minlength: "请输入有效电话号码"
+			},
+			
+			passwd: {
+				minlength: "密码长度至少6位"
+			},
+			
+			nickname: {
+				required: "请输入昵称",
+				minlength: "昵称长度至少4位"
+			},
+		},
+	});
+
+
+})();
+</script>
+
+
+
+
+
+
+</body></html>
+

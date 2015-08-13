@@ -1,0 +1,23 @@
+$def with (privData)
+<!-- used with jquery.js and thumbnail.select.js  and common.css -->
+<div class="thumbnail_select_widget">
+    <img id="current_thumbnail" src="$makeUrl('/admin/images/thumbnail', {'id':privData['CURRENT_IMG'].id})"></img>
+    <input type="hidden" id="thumbnail" name="$:privData['SUBMIT_NAME']" value="$:privData['CURRENT_IMG'].id"></input>
+    <input type="button" id="select_thumbnail" value="选择"/>
+    <div id="thumbnail_list" class="hidden thumbnail_list">
+        <input id="file" name="file" type="file"/> 
+        <input type="button" style="float:right" id="reload" value="刷新"></input>
+
+        <div id="thumbnail_list_all">
+            $ i = 0
+            $for img in  privData['IMAGES_LIST']:
+                $ i = i+1
+                $if i%3 == 0:
+                    <br/><br/>
+                <input type="radio" value="$img.id" name="thumbnail_raido"
+                $if img.id == privData['CURRENT_IMG'].id: 
+                    checked="checked"
+                ><img src="$makeUrl('/admin/images/thumbnail',{'id':img.id})" alt="$img.description"/></input>
+        </div>
+    </div>
+</div>

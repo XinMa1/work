@@ -1,0 +1,65 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+        .mui-bar-nav ~ .mui-content{padding:0;background-color:#fff;}
+            .mui-table-view-cell::after {
+                left: 1px;
+            }
+            .mui_new_body {
+                width: 100%;
+                overflow: hidden;
+                margin: 0 auto;
+                margin-top: 45px;
+            }
+            .mui_new_body div.mui_new_cont {
+                width: 100%;
+                overflow: hidden;
+                margin: 0 auto;
+                border-bottom: 1px solid #ccc;
+                ;
+            }
+            .mui_new_body div.mui_new_cont .mui_new_title {
+                text-align: center;
+                font-size: 1em;
+                padding: 10px 0;
+                color: #666;
+            }
+            .mui_new_body div.mui_new_cont li {
+                text-align:center;
+                font-size: 0.7em;
+                color: #007AFF;
+                padding:5px 0;
+            }
+            p {
+                display:block;
+                color:#000;
+                padding: 5px 10px;
+                text-indent: 2em;
+                font-size: 0.7em;
+                letter-spacing: 0.1em;
+            }
+            .n-content{
+              margin-left:5px;
+              margin-right:5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">$:privData['NOTIFICATION'].name</h1>
+        </header>
+        <div class="mui_new_body mui-content">
+            <div class="mui_new_cont">
+                <ul>
+                    <li>$:privData['NOTIFICATION'].createTime</li>
+                </ul>
+            </div>
+            <p class="n-content">$:privData['NOTIFICATION'].content</p>
+        </div>
+    </body>
+</html>

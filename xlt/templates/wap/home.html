@@ -1,0 +1,170 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style type="text/css">
+            #list {
+                /*避免导航边框和列表背景边框重叠，看起来像两条边框似得；*/              
+                margin-top: -1px;
+            }
+            .mui_pic {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                border-top: 3px solid #ececec;
+                border-bottom: 3px solid #ececec;
+            }
+            .mui_pic ul {
+                padding: 0;
+                margin: 0;
+            }
+            .mui_pic img {
+                width: 100%;
+                float: left;
+                display: block;
+                padding: 0;
+                margin: 0;
+            }
+            .home-ninebox ul.mui-grid-9 {
+                background: #fff;
+                overflow: hidden;
+            }
+            .home-ninebox .mui-grid-view.mui-grid-9 .mui-table-view-cell {
+                border: 0 none;
+            }
+            #xlt-signout{
+                line-height:45px;
+                margin-right:5px;
+            }
+            marquee{
+				color: #414141;
+				font-size: 12px;
+				line-height: 17px;
+				width: 100%;
+				height:150px;
+				border: 1px solid #007AFF;
+			}
+			.xlt-marquee{
+				text-align: center;
+                font-size:18px;
+                line-height: 27px;
+			}
+			.xlt-marquee img{
+				width: 30px;
+				height: 30px;
+                vertical-align:middle;
+                border-radius:6px;
+			}
+			.xlt-marquee:hover{
+                -webkit-filter: invert(20%);
+			}
+            .mui-icon.mui-icon-pengyouquan{
+                color:#BAF05C;
+            }
+            #title{
+                float: left;
+                width: 70%;
+                text-align: center;
+                padding-left:30%;
+                margin-top:3%;
+                margin-bottom: 5%;
+            }
+            #a_title{
+                text-decoration:none;
+                float: left;
+                width: 40px;
+                margin-top: 5%;
+                margin-left: 15%;
+                color: blue;
+            }
+		</style>
+
+	</head>
+
+	<body>
+		<header>
+              <div>
+                 <h4 id="title">首页</h4>
+                 <a href="$makeUrl('/wap/logout')" id="a_title">退出</a>
+         </div>
+		</header>
+		<div class="mui-content">
+            <marquee scrollamount="1" direction="up">
+               $for i in privData['NOTIFICATIONS_LIST']: 
+               <p class="xlt-marquee">
+                    <a href="$makeUrl('/wap/notification_details', {'id':i.id})">
+                      <font color="#ff6600">$i.name</font >
+                    </a>
+                    <img src="$i.emoji">
+               </p>
+            </marquee>	
+            <div class="home-ninebox" id="list">
+                <ul class="mui-table-view mui-grid-view mui-grid-9">
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/news_list')">
+                            <span class="mui-icon iconfont icon-hydt"></span>
+                            <div class="mui-media-body">行业新闻</div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/notifications_list')">
+                            <span class="mui-icon iconfont icon-nbgg"></span>
+                            <div class="mui-media-body">调价通知</div>  
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/categories', {'parent': 1})">
+                            <span class="mui-icon iconfont icon-hbjg"></span>
+                            <div class="mui-media-body">现行价格</div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/orders_list')">
+                            <span class="mui-icon iconfont icon-bjd"></span>
+                            <div class="mui-media-body">报价单</div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/accountings_list')">
+                            <span class="mui-icon iconfont icon-gsdz"></span>
+                            <div class="mui-media-body">对账单</div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" >
+                        <a href="$makeUrl('/wap/about_us')">
+                            <span class="mui-icon iconfont icon-gywm"></span>
+                            <div class="mui-media-body">企业资质</div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/contacts_list')">
+                            <span class="mui-icon iconfont icon-txl"></span>
+                            <div class="mui-media-body">通讯录</div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/my_information')">
+                            <span class="mui-icon iconfont icon-yhzx"></span>
+                            <div class="mui-media-body">用户中心</div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <a href="$makeUrl('/wap/questions')">
+                            <span class="mui-icon  mui-icon-pengyouquan"></span>
+                            <div class="mui-media-body">朋友圈</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            mui.init({
+                keyEventBind: {
+                    backbutton: false
+                },
+            });
+        </script>
+    </body>
+
+</html>

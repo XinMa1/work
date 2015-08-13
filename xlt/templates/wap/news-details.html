@@ -1,0 +1,91 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+         $:privData['render'].header(privData)
+        <style>
+            .mui-table-view-cell::after {
+                left: 1px;
+            }
+            .mui_new_body {
+                width: 100%;
+                overflow: hidden;
+                margin: 0 auto;
+                margin-top: 45px;
+            }
+            .mui_new_body div.mui_new_cont {
+                width: 100%;
+                overflow: hidden;
+                margin: 0 auto;
+                border-bottom: 1px solid #ccc;
+            }
+            .mui_new_body div.mui_new_cont .mui_new_title {
+                font-size: 16px;
+                padding-top: 10px;
+                padding-left: 10px;
+                padding-bottom: 5px;
+                color: #666;
+                text-align: center;
+            }
+            .mui_new_body div.mui_new_cont li {
+                float: left;
+                font-size: 0.7em;
+                color: #999;
+                padding-left: 15px;
+            }
+            .mui_new_body p {
+                padding: 5px 5px;
+                text-indent: 2em;
+                font-size: 0.7em;
+                letter-spacing: 0.1em;
+            }
+            .mui_news_cont{
+                width:92%; 
+                margin: 0 auto; 
+                overflow: hidden; 
+                margin-top:5px ;
+            }
+            .mui_news_cont h4{
+                font-size: 0.8em; 
+                font-weight: normal; 
+                color:#000; 
+                line-height: 1.2em;
+            }
+            .mui_news_cont p{ 
+                text-indent: 2em; 
+                font-size: 0.7em; 
+                letter-spacing: 0.1em; 
+                color:#666; 
+            }
+            .mui_news_cont p.mui_news_bold{
+                font-weight: 
+                bold;color: #000;
+                line-height: 1.1em;
+            }
+            #min-title{
+                float: right;
+                margin-right: 25px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">行业动态</h1>
+        </header>
+        <div class="mui_new_body mui-content" style="padding-top: 0px;">
+           <div class="mui_new_cont">
+              <h3 class="mui_new_title">$:privData['NEWS_DETAILS'].name</h3>
+              <ul id="min-title">
+                 <li>$:privData['NEWS_DETAILS'].createTime</li>
+              </ul>
+           </div>
+           <div class="mui_news_cont">
+             <li>
+                 <p>$:privData['NEWS_DETAILS'].content</p>
+               </li>
+            </div>
+        </div>
+    </body>
+</html>

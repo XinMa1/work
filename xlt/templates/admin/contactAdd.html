@@ -1,0 +1,99 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<!--
+<script src="../lib/jquery.js"></script>
+<script src="../dist/jquery.validate.js"></script>
+-->
+
+<h2>新增联系人</h2>
+<form action="$makeUrl('/admin/contacts/save')" id="formvalidate" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">头像:</td>
+            <td width="608" scope="col">
+                $:privData['render'].thumbnail_select_widget(privData)
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">* 手机号:</td>
+            <td width="608" scope="col"><input  id="cellphone" name="cellphone" type="text" /></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">姓名:</td>
+            <td width="608" scope="col"><input id="name" name="name" type="text" /></td>
+        </tr> 
+        <tr>
+            <td width="100" scope="col">职位:</td>
+            <td width="608" scope="col"><input id="title" name="title" type="text" /></td>
+        </tr> 
+        <tr>
+            <td width="100" scope="col">微信:</td>
+            <td width="608" scope="col"><input id="weixin" name="weixin" type="text" /></td>
+        </tr> 
+        <tr>
+            <td width="100" scope="col">编号:</td>
+            <td width="608" scope="col"><input id="sn" name="sn" type="text" /></td>
+        </tr> 
+        <tr>
+            <td width="100" scope="col">邮箱地址:</td>
+            <td width="608" scope="col"><input id="email" name="email" type="text" /></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">地址:</td>
+            <td width="608" scope="col"><input id="address" name="address" type="text" /></td>
+        </tr>
+        <tr>
+            <td scope="col">性别:</td>
+            <td scope="col">
+                $for k,v in privData['GENDER_LIST'].items():
+                    <input type="radio" value="$:k" name="gender"
+                    $if k == 1: 
+                        checked="checked"
+                    >
+                    $:v
+            </td>
+        </tr>
+        <tr>
+                        <td width="100" scope="col">详细介绍:</td>
+            <td colspan="2" scope="col">
+                <textarea rows="10" cols="5" name="desc" id="desc"></textarea>
+            <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+            <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+            <script type="text/javascript">
+                var instance=new TINY.editor.edit('editor',{
+                    id:'desc',
+                    width:740,
+                    height:175,
+                    cssclass:'contentls',
+                    controlclass:'tecontrol',
+                    rowclass:'teheader',
+                    dividerclass:'tedivider',
+                    controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                        'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                    footer:true,
+                    fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                    xhtml:true,
+                    uploadexc:"$makeUrl('/admin/upload')",
+                    bodyid:'editor',
+                    footerclass:'tefooter',
+                    toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                    resize:{cssclass:'resize'}
+                });
+            </script>
+            </td>
+        </tr> 
+        <tr>
+            <td colspan="2" scope="col"><input type="submit" name="submit" value="保存" id="submits" onmouseover="instance.post();" /></td>
+        </tr>
+</form>
+
+<script src="$makeUrl('/static/admin/admin.validate.js')"></script>
+
+
+</body></html>

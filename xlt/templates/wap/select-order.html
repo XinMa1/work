@@ -1,0 +1,120 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        $:privData['render'].header(privData)
+        <style>
+            .mui-table-view-cell::after {
+                left: 1px;
+            }
+            .mui_bjd_top {
+                width: 100%;
+                margin: 0 auto;
+                padding: 5px 0;
+                overflow: hidden;
+                background-color: rgb(111, 132, 223);
+            }
+            .mui_bjd_search {
+                width: 80%;
+                margin: 0 auto;
+            }
+            input[type="search"] {
+                background: #fff;
+                margin: 0;
+            }
+            .mui-search::before {
+                margin-top: -10px;
+            }
+            .mui_bjd {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_bjd li {
+                padding: 7px 10px;
+                overflow: hidden;
+                border-bottom: 1px solid #ccc;
+                position: relative;
+            }
+            .mui_bjd li dl {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                position: relative;
+            }
+            .mui_bjd li dl dt {
+                display: block;
+                font-size: 0.8em;
+            }
+            .mui_bjd li dl dd {
+                display: block;
+                font-size: 0.7em;
+                color: #999;
+            }
+            .mui_bjd li dl dd:nth-of-type(1) {
+                margin-top: 3px;
+            }
+             button.mui-btn.mui-btn-success,button.mui-btn.mui-btn-primary {
+                float: left;
+                width: 50%;
+                border-radius: 0px;
+                padding: 4px 0px;
+                line-height: 40px;
+                top: 0px;
+            }
+            #xlt-selectO-radio{
+                position:absolute;
+                margin-left:90%;
+            }
+            #xlt-selectO-home{
+                margin-top: 5px; color: red; font-size: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <a id="xlt-selectO-home"  class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/home')">首页</a>
+            <h1 class="mui-title">报价单</h1>
+        </header>
+        <div class="mui-content">
+            <form action="$makeUrl('/wap/confirm_select_order')" method="post">
+            <div class="mui_bjd">
+            <ul>
+            $ index=0
+            $for i in privData['ORDERS_LIST']:
+                $ total = 0
+                $for j in i.products_order:
+                    $ total += j.price*j.count*(1.0+j.ratio)
+                <a href="$makeUrl('/wap/price_sheet_details', {'id': i.id})">
+                    <li>
+                      <dl id="xlt-selectO-dl">
+                          <dt>$i.customer</dt>
+                          <dd>
+                              $if index==0:
+                                  <input id="xlt-selectO-radio" name="selected" type="radio" value="$i.id" checked/>
+                              $else: 
+                                  <input id="xlt-selectO-radio" name="selected" type="radio" value="$i.id"/>
+                              $ index +=1
+                          </dd>
+                          <dd>
+                          <dd>日期：$i.created_time.strftime('%Y-%m-%d')</dd>
+                          <dd>价格：￥$total</dd>
+                      </dl>
+                    </li>
+                </a>
+            </ul>
+            </div>
+        </div>
+
+        <input name="product" type="hidden" value="$:privData['PRODUCT'].id"/>
+        <input name="price" type="hidden" value="$:privData['PRICE']"/>
+
+         <nav id="footer" class="mui-bar mui-bar-tab">
+            <button class="mui-btn mui-btn-success" name="add">新&nbsp;&nbsp;增</button>
+            <button class="mui-btn mui-btn-primary" name="save">保&nbsp;&nbsp;存</button>
+        </nav>
+        </form>
+    </body>
+</html>

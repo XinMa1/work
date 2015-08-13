@@ -1,0 +1,36 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>编辑图片</h2>
+<form action="/admin/images/save" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">缩略图:</td>
+            <td width="608" scope="col">
+                <a href="$imageUrl(privData['IMAGE_INFO'].uuid)">
+                    <img src="data:image/jpeg;base64,$privData['IMAGE_INFO'].thumbnail"/>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">链接:</td>
+            <td width="608" scope="col"><input name="ref" type="text" value=""/></td>
+        </tr>
+
+        <tr>
+            <td width="100" scope="col">描述:</td>
+            <td width="608" scope="col"><textarea name="desc">$:privData['IMAGE_INFO'].description</textarea></td>
+        </tr>
+        <tr>
+            <input name="id" type="hidden" value="$:privData['IMAGE_INFO'].id"/>
+            <td colspan="2" scope="col"><input type="submit" name="submit" value="保存" id="submits"/></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

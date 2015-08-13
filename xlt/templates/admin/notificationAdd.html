@@ -1,0 +1,105 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>新增通告</h2>
+<form action="/admin/notifications/save" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">* 通告标题:</td>
+            <td width="608" scope="col"><input name="name" type="text" id="name" value="" /></td>
+        </tr>
+         <tr style="height:80px;">
+             <td>表情:</td> 
+             <td>
+                <img id ="showimg" src="../../static/images/0.gif" />
+             </td>
+             <td  style="display:none">
+                <input type="text" value="" name="emoji" id="emoji"/>
+             </td>
+         </tr>
+         <tr>
+             <td>选择表情</td>
+             <td>
+                <ul>
+                  <li><img onclick="addImg(this.src);"  src="../../static/images/0.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/5.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/6.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/9.gif"/></li>
+                  <li><img onclick="addImg(this.src);"  src="../../static/images/10.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/11.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/15.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/17.gif"/></li>
+                  <li><img onclick="addImg(this.src);"  src="../../static/images/20.gif"/></li>
+               </ul>
+               <ul>  
+                  <li><img onclick="addImg(this.src);" src="../../static/images/24.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/81.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/82.gif"/></li>
+                  <li><img onclick="addImg(this.src);" src="../../static/images/86.gif"/></li>
+                </ul>
+             </td>
+         </tr>
+         <tr>
+            <td colspan="2" scope="col">
+                <textarea rows="10" cols="5" name="content" id="content"></textarea>
+            <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+            <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+            <script type="text/javascript">
+                var instance=new TINY.editor.edit('editor',{
+                    id:'content',
+                    width:740,
+                    height:175,
+                    cssclass:'contentls',
+                    controlclass:'tecontrol',
+                    rowclass:'teheader',
+                    dividerclass:'tedivider',
+                    controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                        'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                    footer:true,
+                    fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                    xhtml:true,
+                    uploadexc:"$makeUrl('/admin/upload')",
+                    bodyid:'editor',
+                    footerclass:'tefooter',
+                    toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                    resize:{cssclass:'resize'}
+                });
+            </script>
+            </td>
+        </tr> 
+        <tr>
+            <td width="100" scope="col">缩略图:</td>
+            <td width="608" scope="col">
+                $:privData['render'].thumbnail_select_widget(privData)
+            </td>
+        </tr>        
+        <tr>
+            <td colspan="2" scope="col"><input type="submit" name="submit" value="保存" id="submits" onmouseover="instance.post();" /></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+<script>
+ function addImg(e){
+   document.getElementById('showimg').src=e;
+   document.getElementById('emoji').value=e;
+   console.log(e);
+ }
+</script>
+<style>
+ ul{
+   clear:both;
+   }
+ ul li{
+  float:left;
+  margin-right:10px;
+  margin-bottom:5px;
+ }
+</style>
+</html>

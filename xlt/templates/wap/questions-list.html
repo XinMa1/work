@@ -1,0 +1,165 @@
+$def with (privData)
+<html>
+<head>
+    $:privData['render'].header(privData)
+    <style>
+        html,
+        body {
+            background-color: #efeff4;
+        }
+        #msw-allquestion-li>a:not(.mui-btn) {
+            margin: 0px 0px;
+        }
+        #msw-allquestion-li {
+            padding: 0px 0px 0px 0px;
+        }
+        #msw-allquestion-li:after {
+            height: 0px;
+        }
+        .msw-allquestion-list-div img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        .msw-allquestion-list-div{
+            height: 30px;
+        }
+        .msw-allquestion-list-div.mui-table-cell {
+            width: 70%;
+            height: 35px;
+            line-height: 30px;
+            float: left;
+            margin-top: 5px;
+        }
+        .msw-allquestion-list-my-thumbnial {
+            float: left;
+        }
+        /*下面三个式样设计完成换行，到第二行不在显示*/
+        
+        #msw-allquestion-body .mui-ellipsis {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre-wrap;
+        }
+        .msw-allquestion-list-body.mui-table-cell {
+            float: left;
+        }
+        #msw-allquestion-desc {
+            position: relative;
+            line-height: 1.4em;
+            /* 2 times the line-height to show 2 lines */
+            height: 2.8em;
+            overflow: hidden;
+        }
+        #msw-allquestion-desc:after {
+            font-weight: bold;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0 20px 1px 45px;
+        }
+        #msw-allquestion-body {
+            width: 100%;
+        }
+        #msw-allquestion-body p:nth-child(1) {
+            font-size: 18px;
+            margin-left: 10px;
+            padding-top: 15px;
+            padding-bottom: 5px;
+            color: black;
+        }
+        #msw-allquestion-body p:nth-child(2) {
+            padding-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 15px;
+            color: #797672;
+        }
+        .msw-all-questionlist-commensts-number {
+            float: right;
+            margin-right: 10px;
+            margin-left: 5px;
+            font-size: 16px;
+        }
+        .msw-allquestion-list-comments-icon {
+            float: right;
+        }
+        .msw-allquestion-list-comments-icon.iconfont {
+            font-size: 18px;
+        }
+        #div-reply-number {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 1px;
+            margin-right: 1px;
+            color: gray;
+        }
+        #msw-all-question-reply-number span {
+            color: #ccc;
+        }
+        p#name.msw-allquestion-contact-name {
+            text-align: center;
+        }
+        .xlt-create-time{
+            float: left;
+            margin-left: 10px;
+            font-size: 15px;
+            color: grey;
+        }
+        #raise-question{
+           top:0px;
+           width:94%;
+           height:45px;
+           margin-top:3px;
+           margin-right:2.7%;
+           margin-left:2.7%;
+           line-height: 30px;
+        }
+        .xlt-separator{
+           height: 15px;
+           background-color: #efeff4;
+        }
+        #msw-question-list-ul:after{
+           height:0px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"  onclick="history.go(-1);"></a>
+        <h1 class="mui-title">问题列表</h1>
+    </header>
+    <nav class="mui-bar mui-bar-tab">
+        <a id="raise-question"  class="mui-btn mui-btn-positive mui-btn-block" href="$makeUrl('/wap/add_question')">我要提问</a>
+    </nav>
+    <div class="mui-content">
+        <ul id="msw-question-list-ul" class="mui-table-view mui-content-padded">
+            $for i in privData['QUESTIONS_LIST']:
+            <li id="msw-allquestion-li" class="">
+                <a href="$makeUrl('/wap/question_details',{'id':i[0].id})">
+                    <div class="msw-allquestion-contact-cell mui-table">
+                        <div class="msw-allquestion-list-div">
+                            <img id="msw-allquestion-list" src="data:image/jpeg;base64,$i[0].owner.avatur.thumbnail">
+                            <div class="msw-allquestion-list-my-thumbnial">$i[0].owner.name</div>
+                        </div>
+                        <div id="msw-allquestion-body" class="msw-question-list-body ">
+                            <p id="name" class="msw-allquestion-contact-name">$i[0].title</p>
+                            <p class="mui-ellipsis-2" id="msw-allquestion-desc">$i[0].content</p>
+                        </div>
+                        <div id="div-reply-number" class="">
+                            <span class="xlt-create-time">$i[0].created_time</span>
+                            <span class="msw-all-questionlist-commensts-number">$i[1]</span>
+                            <span class="msw-allquestion-list-comments-icon mui-icon mui-icon-chatbubble"></span>
+                        </div>
+                    </div>
+                </a>
+                <div class="xlt-separator"></div>
+            </li>
+        </ul>
+    </div>
+</html>

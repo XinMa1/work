@@ -1,0 +1,57 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>编辑来款项目</h2>
+<form action="/admin/accountings/incomming_update" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+         <tr>
+            <td width="100" scope="col">来款单位</td>
+            <td width="608" scope="col"><input name="name" type="text" id="name" value="$privData['INOROUT'].origin" /></td>
+         </tr>
+         <tr>
+            <td width="100" scope="col">金额*</td>
+            <td width="608" scope="col"><input name="money" type="text" id="money" value="$privData['INOROUT'].money" /></td>
+         </tr>
+         <tr>
+             <td width="100" scope="col">描述</td>
+            <td colspan="2" scope="col">
+                <textarea rows="10" cols="5" name="content" id="content"> $privData['INOROUT'].description </textarea>
+            <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+            <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+            <script type="text/javascript">
+                var instance=new TINY.editor.edit('editor',{
+                    id:'content',
+                    width:740,
+                    height:175,
+                    cssclass:'contentls',
+                    controlclass:'tecontrol',
+                    rowclass:'teheader',
+                    dividerclass:'tedivider',
+                    controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                        'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                    footer:true,
+                    fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                    xhtml:true,
+                    uploadexc:"$makeUrl('/admin/upload')",
+                    bodyid:'editor',
+                    footerclass:'tefooter',
+                    toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                    resize:{cssclass:'resize'}
+                });
+            </script>
+            </td>
+        </tr> 
+        <tr>
+            <input name="accountID" type="hidden" value="$:privData['ACCOUNTING_ID']"/>
+            <input name="id" type="hidden" value="$:privData['INOROUT'].id"/>
+            <td colspan="2" scope="col"><input type="submit" name="submit" value="保存" id="submits" onmouseover="instance.post();" /></td>
+        </tr>
+    </table>
+</form>
+
+</body></html>

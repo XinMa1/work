@@ -1,0 +1,45 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>来款项管理</h2>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <td align="left">
+              <a href="$makeUrl('/admin/accountings/edit', {'id': privData['ACCOUNTING'].id})">返回对帐单</a> | 
+              <a href="$makeUrl('/admin/accountings/add_incomming', {'id': privData['ACCOUNTING'].id})">新增来款项</a>
+        </td>    
+    </tr>
+</table>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <th>ID</th>
+        <th>创建时间</th>
+        <th>金额</th>
+        <th>来款单位</th>
+        <th>管理</th>
+    </tr>
+    $for i in privData['INCOMMINGS_LIST']:
+    <tr>
+        <td align="center">$i.id</td>
+        <td align="center">$str(i.createTime)[:16]</td>
+        <td align="center">$i.money</td>
+        <td align="center">$i.origin</td>
+        <td align="center">
+            <a href="$makeUrl('/admin/accountings/edit_incomming',{'id':i.id,'accountid':privData['ACCOUNTING'].id})">编辑</a> | 
+            <a href="$makeUrl('/admin/accountings/delete_incomming',{'id':i.id,'accountid':privData['ACCOUNTING'].id})" onclick="return confirm('确认删除？')">删除</a>
+        </td>
+    </tr>
+</table>
+
+<nav class="navigation">
+    $:privData['PAGE_STRING']
+</nav>
+
+
+<div style="clear: both;"></div>
+</div>
+</body></html>

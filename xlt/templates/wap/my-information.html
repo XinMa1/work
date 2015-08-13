@@ -1,0 +1,152 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+            }
+            .mui-content {} .mui_content div.mui_info {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                padding: 40px 20px;
+                background: #2F67B2;
+            }
+            .mui_content div.mui_info img {
+                max-width: 70px;
+                max-height: 70px;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+            }
+            .mui_content div.mui_info .mui_body {
+                width: calc(100% - 70px);
+                width: -webkit-calc(100% - 70px);
+                overflow: hidden;
+                margin: 0 auto;
+            }
+            .mui_content div.mui_info .mui_body dl {
+                width: 100%;
+                overflow: hidden;
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+            .mui_content div.mui_info .mui_body dl dt {
+                display: block;
+                font-size: 1em;
+                -webkit-text-stroke: 0.5px #947931;
+                -webkit-text-fill-color: #fff;
+                margin: 6px;
+            }
+            .mui_content div.mui_info .mui_body dl dd {
+                display: block;
+                border-radius: 2px;
+                -webkit-border-radius: 2px;
+                font-size: 0.6em;
+                color: #000;
+                float: left;
+                padding: 0 8px;
+                background-color: rgba(255, 255, 255, 0.7);
+                margin: 6px 3px;
+            }
+            .mui_content div.mui_mess {
+                background-color: rgba(255, 255, 255, 0.8);
+                overflow: hidden;
+                margin: 0 auto;
+            }
+            .mui_content div.mui_mess .mui-table-view {
+                background: none;
+            }
+            .mui_content div.mui_mess .mui-table-view-cell::after {
+                background: #999;
+            }
+            .mui_content div.mui_mess li a {
+                font-size: 0.8em;
+            }
+            .mui_content div.mui_mess .mui-table-view-cell::after {
+                left: 0;
+            }
+            .mui_content div.mui_mess .mui-navigate-right {
+                color: #000;
+            }
+            .mui_content div.mui_make {
+                width: 100%;
+                margin: 30px auto 0;
+                overflow: hidden;
+            }
+            .mui_content div.mui_make li {
+                text-align: center;
+                line-height: 40px;
+                height: 40px;
+                background: #D5EAFC;
+            }
+            .mui_content div.mui_make li a {
+                font-size: 0.8em;
+                color: #337DBC;
+                cursor: pointer;
+            }
+            #editMyInfo{
+                margin-top: 5px;
+                color: red;
+                font-size: 15px;
+            } 
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav"> 
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a> 
+            <a id="editMyInfo"  class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/edit_my_information',{'id':privData['USER'].id})">编辑</a>
+            <h1 class="mui-title">用户中心</h1>
+        </header>
+        <div class="mui-content mui_content">
+            <div class="mui_info">
+                <img class="mui-media-object mui-pull-left" width="167px" height="167px" src="data:image/jpeg;base64,$:privData['USER'].avatur.thumbnail">
+                <div class="mui_body">
+                    <dl>
+                        <dt>$:privData['USER'].name</dt>
+                        <dd>$:privData['GENDER_LIST'][privData['USER'].gender]</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="mui_mess">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                        姓名 ：<span class="mui_messsp">$:privData['USER'].name</span>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                        职位 ：<span class="mui_messsp">$:privData['USER'].job</span>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                        电话 ：<span class="mui_messsp">$:privData['USER'].cellphone</span>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                        微信 ：<span class="mui_messsp">$:privData['USER'].weixin</span>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                        邮箱 ：<span class="mui_messsp">$:privData['USER'].email</span>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right">
+                        地址 ：<span class="mui_messsp">$:privData['USER'].address</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </body>
+
+</html>

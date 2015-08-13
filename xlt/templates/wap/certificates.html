@@ -1,0 +1,43 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+	.mui-table-view-cell::after{left:1px;}
+		
+			.mui-bar-nav~.mui-content{
+				padding: 0;
+			}
+		.mui_ry_cont{width:100%; margin: 0 auto;margin-top: 45px; overflow: hidden; background:#ccc ;}
+		.mui_ry_cont li{width:50%; overflow: hidden; float:left;display:box; box-align:center; box-pack:center;display:-moz-box; -moz-box-align:center; -moz-box-pack:center;display:-webkit-box; -webkit-box-align:center; -webkit-box-pack:center;}
+		.mui_ry_cont img{width:96%;display:block; padding:1% 2%;}
+	</style>
+
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">资质证书</h1>
+        </header>
+        <div class="mui_ry_cont">
+		<ul>
+			<li>
+				<img src="$makeUrl('/static/wap/images/z1.jpg')">
+			</li>
+			<li>
+				<img src="$makeUrl('/static/wap/images/z2.jpg')">
+			</li>
+			<li>
+				<img src="$makeUrl('/static/wap/images/z3.jpg')">
+			</li>
+			<li>
+				<img src="$makeUrl('/static/wap/images/z4.jpg')">
+			</li>
+			
+		</ul>
+	</div>
+    </body>
+
+</html>

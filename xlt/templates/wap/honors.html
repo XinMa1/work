@@ -1,0 +1,81 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+       <style>
+	.mui-table-view-cell::after{left:1px;}
+		
+			.mui-bar-nav~.mui-content{
+				padding: 0;
+			}
+		
+    #main{margin-top: 45px;
+        position: relative;
+		margin: 45px auto;
+		
+    }
+    .pin{ padding:5px 0;
+       width:50%;
+	   
+        float:left;
+		
+    }
+    .box{
+       width:100%;
+	  
+        border:1px solid #ccc;
+        box-shadow: 0 0 6px #ccc;
+        border-radius: 5px;
+    }
+    .box img{
+        width:100%;
+		padding:2% 2%;
+        display:block;
+    }
+		
+	</style>
+   
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">资质证书</h1>
+        </header>
+        <div id="main">
+    <div class="pin">
+        <div class="box">
+            <img src="$makeUrl('/static/wap/images/z1.jpg')"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="$makeUrl('/static/wap/images/z2.jpg')"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="$makeUrl('/static/wap/images/z3.jpg')"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="$makeUrl('/static/wap/images/z4.jpg')"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="$makeUrl('/static/wap/images/z1.jpg')"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="$makeUrl('/static/wap/images/z2.jpg')"/>
+        </div>
+    </div>
+
+</div>
+    </body>
+
+</html>

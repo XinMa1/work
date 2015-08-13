@@ -1,0 +1,53 @@
+$def with (privData)
+<div id="bodyDiv">
+<div>
+<ul id="sddm">
+    <li>
+        <a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">导航菜单</a>
+        <div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin')">&nbsp;&nbsp;管理首页&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/logout')" onclick="return confirm('确认退出？')">&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
+        </div>
+    </li>
+    <li>
+        <a href="$makeUrl('/admin/categories')">分类管理</a>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">文章管理</a>
+        <div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/news')">新闻动态</a>
+            <a href="$makeUrl('/admin/notifications')">内部公告</a>
+        </div>
+    </li>
+    <li>
+        <a href="$makeUrl('/admin/products')">现行价格</a>
+    </li>
+    <li>
+        <a href="$makeUrl('/admin/orders')">报价单</a>
+    </li>
+    <li>
+        <a href="$makeUrl('/admin/accountings')">对账单</a>
+    </li>
+    <li>
+        <a href="$makeUrl('/admin/images')">图片管理</a>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m3')" onmouseout="mclosetime()">用户管理</a>
+        <div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/users')">用户列表</a>
+            <a href="$makeUrl('/admin/contacts')">通&nbsp;&nbsp;讯&nbsp;&nbsp;录</a>
+        </div>
+    </li>
+    <li>
+    </li>
+    <li>
+        <a href="#" onmouseover="mopen('m8')" onmouseout="mclosetime()">系统管理</a>
+        <div id="m8" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="$makeUrl('/admin/install/about')">&nbsp;&nbsp;版权管理&nbsp;&nbsp;</a>
+            <a href="$makeUrl('/admin/install/install')" onclick="return confirm('确认安装？')">&nbsp;&nbsp;系统安装&nbsp;&nbsp;</a>
+        </div>
+    </li>
+</ul>
+
+<div style="clear:both;"></div>
+</div>

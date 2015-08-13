@@ -1,0 +1,88 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            .mui-content {
+                margin: 10px;
+            }
+            table {
+                width: 100%;
+                table-layout: auto;
+                border-collapse: collapse;
+                border: 1px solid black;
+            }
+            td,
+            th {
+                border: 1px solid black;
+                text-align: center;
+            }
+            h1 {
+                text-align: center;
+                -webkit-margin-after: 0.4em;
+            }
+            #xlt-name{
+               border-right:none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="mui-content">
+            <h1>江苏东峰电缆有限公司报价单</h1>
+            <div class="xlt-top">
+                <span>询价单位：</span>
+                <span>$privData['ORDER'].customer</span>
+            </div>
+            <div class="xlt-top">
+                <span>联系人：</span>
+                <span>customer</span>
+            </div>
+            <div class="xlt-list">
+                <table>
+                    <tr>
+                        <th>序号</th>
+                        <th id="xlt-name">型号 &nbsp;&nbsp;&nbsp;    直径</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>单价（元）</th>
+                        <th>金额 （元）</th>
+                        <th>备注</th>
+                    </tr>
+                    $ total = 0
+                    $ num = 0
+                    $ eprice = 0
+                    $for i in privData['DETAILS']: 
+                        $ num += 1
+                        $ eprice =i.price*i.count*(1.0+i.ratio)
+                        $ total += eprice
+                        $ name,diameter = i.name.split('   ')
+                        <tr>
+                            <td>$num</td>
+                            <td>$name  &nbsp;&nbsp;$diameter</td>
+                            <td></td>
+                            <td>$i.count</td>
+                            <td>$i.price</td>
+                            <td>$eprice</td>
+                            <td>$i.description</td>
+                       </tr>
+                </table>
+                <table>
+                    <tr>
+                       <td>合计(元)</td>
+                       <td>$total</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="xlt-show-message">
+                <ol>
+                    注：
+                    <li>以上报价均含税、包装及运费。</li>
+                    <li>报价若单价与总价有差异，以单价为准。</li>
+                    <li>由于产品原料价格的波动，本报价为当天有效价，实际签约或者要货时请根据材料价格重新进行商定。</li>
+                </ol>
+            </div>
+    </body>
+</html>

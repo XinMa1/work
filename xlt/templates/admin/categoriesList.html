@@ -1,0 +1,58 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>分类列表</h2> 
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+<tr>
+<td>
+<a href="$makeUrl('/admin/categories/add')">新增分类</a>
+</td>
+<td align="right">
+  <form id="searchForm" action="$makeUrl('/admin/categories/search')" method="post" >
+   <input type="text" id="keywords" name="keywords" placeholder="关键字..." value="">
+   <input id="searchButton" type="submit" value="过 滤"/>
+  </form>
+</td>
+</tr>
+</table>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>上级分类ID</th>
+        <th>上级分类</th>
+        <th>描述</th>
+        <th>管理</th>
+    </tr>
+    $for i in privData['CATEGORIES_LIST']:
+    <tr>
+        <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >$i.id </a></td>
+        <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >$i.name</a></td>
+        $if i.id ==1:
+            <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >NULL</a></td>
+            <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >NULL</a></td>
+        $elif not i.parent:
+            <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >NULL</a></td>
+            <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >NULL</a></td>
+        $else:
+            <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >$i.parent.id</a></td>
+            <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >$i.parent.name</a></td>
+        <td align="center"><a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >$i.description</a></td>
+        <td align="center">
+            <a href="$makeUrl('/admin/categories/edit',{'id':i.id})" >编辑</a> |
+            <a href="$makeUrl('/admin/categories/delete',{'id':i.id})" onclick="return confirm('确认删除？')">删除</a>
+        </td>
+    </tr>
+</table>
+
+<nav class="navigation">
+    $:privData['PAGE_STRING']
+</nav>
+
+<div style="clear: both;"></div>
+</div>
+</body></html>

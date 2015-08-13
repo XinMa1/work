@@ -1,0 +1,98 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>新增对帐单</h2>
+<form action="/admin/accountings/save" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">会员帐号:</td>
+            <td width="608" scope="col">
+                <SELECT  name="owner" id="owner">
+                $for i in privData['USERS_LIST']:
+                    <option value="$i.id"
+                    $if i.id == 1:
+                        selected="selected"
+                    >$i.name</option>
+                </SELECT>
+            </td>    
+        </tr>
+        <tr>
+            <td width="100" scope="col">上个月未结账金额:</td>
+            <td width="608" scope="col"><input name="symwjzje" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月发货合计:</td>
+            <td width="608" scope="col"><input name="byfhhj" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月到账合计:</td>
+            <td width="608" scope="col"><input name="bydzhj" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">月末结存:</td>
+            <td width="608" scope="col"><input name="ymjc" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月业务利润:</td>
+            <td width="608" scope="col"><input name="byywlr" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月开票:</td>
+            <td width="608" scope="col"><input name="bykp" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月奖:</td>
+            <td width="608" scope="col"><input name="byj" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月扣:</td>
+            <td width="608" scope="col"><input name="byk" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本年发货累计:</td>
+            <td width="608" scope="col"><input name="bnfhlj" type="text"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本年到账累计:</td>
+            <td width="608" scope="col"><input name="bndzlj" type="text"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" scope="col">
+                <textarea rows="10" cols="5" name="content" id="content"></textarea>
+            <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+            <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+            <script type="text/javascript">
+                var instance=new TINY.editor.edit('editor',{
+                    id:'content',
+                    width:740,
+                    height:175,
+                    cssclass:'contentls',
+                    controlclass:'tecontrol',
+                    rowclass:'teheader',
+                    dividerclass:'tedivider',
+                    controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                        'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                    footer:true,
+                    fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                    xhtml:true,
+                    uploadexc:"$makeUrl('/admin/upload')",
+                    bodyid:'editor',
+                    footerclass:'tefooter',
+                    toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                    resize:{cssclass:'resize'}
+                });
+            </script>
+            </td>
+        </tr> 
+        <tr>
+            <td colspan="2" scope="col"><input type="submit" name="submit" value="保存" id="submits" onmouseover="instance.post();" /></td>
+        </tr>
+    </table>
+</form>
+
+</body></html>

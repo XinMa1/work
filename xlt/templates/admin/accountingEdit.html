@@ -1,0 +1,121 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>编辑对帐单</h2>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <td align="left">
+              <a href="$makeUrl('/admin/accountings/incommings', {'accounting': privData['ACCOUNTING'].id})">来款项管理</a> | 
+              <a href="$makeUrl('/admin/accountings/outgoings', {'accounting': privData['ACCOUNTING'].id})">去款项管理</a> 
+        </td>    
+    </tr>
+</table>
+
+<form action="/admin/accountings/modify" method="post">
+    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+        <tr>
+            <td width="100" scope="col">会员帐号:</td>
+            <td width="608" scope="col">
+                <SELECT  name="owner" id="owner">
+                $for i in privData['USERS_LIST']:
+                    <option value="$i.id"
+                    $if i.id == privData['ACCOUNTING'].owner.id:
+                        selected="selected"
+                    >$i.name</option>
+                </SELECT>
+            </td>    
+        </tr>
+         <tr>
+            <td width="100" scope="col">状态:</td>
+            <td width="608" scope="col">
+                <SELECT  name="status" id="status">
+                $for k,v in privData['ACCOUNTINGS_STATUS'].items():
+                    <option value="$k"
+                    $if k == privData['ACCOUNTING'].status:
+                        selected="selected"
+                    >$v</option>
+                </SELECT>
+            </td>    
+        </tr>
+         <tr>
+            <td width="100" scope="col">上个月未结账金额:</td>
+            <td width="608" scope="col"><input name="symwjzje" type="text" value="$privData['ACCOUNTING'].symwjzje"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月发货合计:</td>
+            <td width="608" scope="col"><input name="byfhhj" type="text" value="$privData['ACCOUNTING'].byfhhj"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月到账合计:</td>
+            <td width="608" scope="col"><input name="bydzhj" type="text" value="$privData['ACCOUNTING'].bydzhj"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">月末结存:</td>
+            <td width="608" scope="col"><input name="ymjc" type="text" value="$privData['ACCOUNTING'].ymjc"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月业务利润:</td>
+            <td width="608" scope="col"><input name="byywlr" type="text" value="$privData['ACCOUNTING'].byywlr"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月开票:</td>
+            <td width="608" scope="col"><input name="bykp" type="text" value="$privData['ACCOUNTING'].bykp"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月奖:</td>
+            <td width="608" scope="col"><input name="byj" type="text" value="$privData['ACCOUNTING'].byj"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本月扣:</td>
+            <td width="608" scope="col"><input name="byk" type="text" value="$privData['ACCOUNTING'].byk"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本年发货累计:</td>
+            <td width="608" scope="col"><input name="bnfhlj" type="text" value="$privData['ACCOUNTING'].bnfhlj"/></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">本年到账累计:</td>
+            <td width="608" scope="col"><input name="bndzlj" type="text" value="$privData['ACCOUNTING'].bndzlj"/></td>
+        </tr>
+               
+         <tr>
+            <td colspan="2" scope="col">
+                <textarea rows="10" cols="5" name="content" id="content">$privData['ACCOUNTING'].description</textarea>
+            <script type="text/javascript" src="$makeUrl('/static/editor/tinyeditor.js')"></script>
+            <link rel="stylesheet" href="$makeUrl('/static/editor/style.css')" />
+            <script type="text/javascript">
+                var instance=new TINY.editor.edit('editor',{
+                    id:'content',
+                    width:740,
+                    height:175,
+                    cssclass:'contentls',
+                    controlclass:'tecontrol',
+                    rowclass:'teheader',
+                    dividerclass:'tedivider',
+                    controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|', 'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+                        'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','print','n',
+                        'font','size','style','forecolor','backcolor','|','image','swf','media','upload','|','hr','link','unlink','|','cut','copy','paste'],
+                    footer:true,
+                    fonts:['楷体','宋体','黑体','Verdana','Arial','Georgia'],
+                    xhtml:true,
+                    uploadexc:"$makeUrl('/admin/upload')",
+                    bodyid:'editor',
+                    footerclass:'tefooter',
+                    toggle:{text:'源码',activetext:'视图',cssclass:'toggle'},
+                    resize:{cssclass:'resize'}
+                });
+            </script>
+            </td>
+        </tr> 
+        <tr> 
+            <input name="id" type="hidden" value="$:privData['ACCOUNTING'].id"/>
+            <td colspan="2" scope="col"><input type="submit" name="submit" value="保存" id="submits" onmouseover="instance.post();" /></td>
+        </tr>
+    </table>
+</form>
+
+</body></html>

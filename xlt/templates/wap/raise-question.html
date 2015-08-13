@@ -1,0 +1,164 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            html,
+            body {
+                background-color: #efeff4;
+            }
+            .msw-raiseQ-contact-avatar {
+                width: 80px;
+            }
+            .msw-raiseQ-contact-avatar img {
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+            }
+            .msw-raiseQ-contact-name {
+                margin-right: 20px;
+            }
+            .msw-raiseQ-contact-name,
+            .msw-raiseQ-contact-position {
+                float: left;
+            }
+            .msw-raiseQ-contact-position.mui-h6.mui-icon.iconfont.icon-nv {
+                color: red;
+            }
+            .msw-raiseQ-contact-position.mui-h6.mui-icon.iconfont.icon-nan {
+                color: blue;
+            }
+            .msw-raiseQ-contact-content {
+                width: 100%;
+            }
+            .msw-raiseQ-contact-cell.mui-table .mui-table-cell {
+                padding: 11px 0;
+                vertical-align: middle;
+            }
+            .msw-raiseQ-contact-cell {
+                position: relative;
+                margin: -11px 0;
+            }
+            .msw-ask-input {
+                margin-top: 10px;
+                margin-bottom: -15px;
+            }
+            .msw-ask-div-pic li {
+                list-style: none;
+                width: 33.3%;
+                float: left;
+                padding-left: 3%;
+                padding-right: 3%;
+                margin-top: -20px;
+            }
+            .msw-ask-div-pic li img {
+                width: 98%;
+            }
+            .msw-ask-btn {
+                width: 95%;
+                height: 40px;
+                margin-left: 3%;
+                font-size: 20px;
+                margin-top: 6px;
+            }
+            #avatur {
+                margin-left: -5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon  mui-icon-back mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">提问</h1>
+        </header>
+        <div class="mui-content">
+            <form action="$makeUrl('/wap/raise_question')" method="POST" enctype="multipart/form-data">
+            <div class="mui-content-padded">
+                <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+                    <li class="mui-table-view-cell">
+                        <div>
+                            <div class="msw-raiseQ-contact-cell mui-table ">
+                                <div class="msw-raiseQ-contact-avatar mui-table-cell">
+                                    <img id="msw-raiseQ-avatur" src="data:image/jpeg;base64,$:privData['USER'].avatur.thumbnail" />
+                                </div>
+                                <div class="msw-raiseQ-contact-content mui-table-cell">
+                                    <div class="mui-clearfix">
+                                        <h4 id="name" style="margin-bottom: 10px;" class="msw-raiseQ-contact-name">$:privData['USER'].name</h4>
+                                        <span id="gender" style="line-height: 29px;" class="msw-raiseQ-contact-position mui-h6 mui-icon iconfont icon-nv"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="msw-ask-input">
+                    <input id="title" type="text" name ="title" placeholder="点击输入标题">
+                </div>
+            </div>
+        </div>
+
+        <div class="mui-content-padded">
+            <textarea id="content" placeholder="点击添加问题详述" rows="3" name="content"></textarea>
+        </div>
+        <div class="msw-ask-div-pic" id="pic-album">
+            <ul>
+                <li>
+                    <img id="img1"  name="img1" style="width: 100px; height: 100px;" onclick="getImage(this)" src="../../static/images/tw.jpg">
+					<input style="display:none;" id="imgfile1" type="file" accept="image/jpeg" capture="camera"  onchange="loadImageFile(this);" name="imgfile1">
+                </li>
+                <li>
+                    <img id="img2" name="img2" style="width: 100px; height: 100px;" onclick="getImage(this)" src="../../static/images/tw.jpg">
+					<input style="display:none;" id="imgfile2" type="file" accept="image/jpeg" capture="camera"  onchange="loadImageFile(this);" name="imgfile2">
+                </li>
+                <li>
+                    <img id="img3" name="img3" style="width: 100px; height: 100px;" onclick="getImage(this)" src="../../static/images/tw.jpg">
+					<input style="display:none;" id="imgfile3" type="file" accept="image/jpeg" capture="camera"  onchange="loadImageFile(this);" name="imgfile3">
+                </li>
+            </ul>
+        </div>
+
+        <button id="submit-question" type="submit"  class="mui-btn mui-btn-royal mui-btn-outlined msw-ask-btn">提交问题</button>
+        </form>
+        </div>
+<script type="text/javascript">
+var temp;
+function getImage(img){
+	temp=img;
+	var inputstr="";
+	console.log(temp.name);
+	if (temp.name == "img1")
+	{
+		inputstr="imgfile1";
+	}
+	else if (temp.name == "img2")
+	{
+		inputstr="imgfile2";
+	}
+	else
+	{
+		inputstr="imgfile3";
+	}
+	document.getElementById(inputstr).click();
+}
+var oFReader = new FileReader() 
+
+oFReader.onload = function (oFREvent) {
+  temp.src = oFREvent.target.result;
+  temp="";
+};
+
+function loadImageFile(file) {
+  if (file.files.length === 0) { return; }
+  var oFile = file.files[0];
+  
+  oFReader.readAsDataURL(oFile);
+}
+</script>
+	 </body>
+</html>

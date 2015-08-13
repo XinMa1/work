@@ -1,0 +1,63 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+            }
+            .mui_public {
+                width: 100%;
+                overflow: hidden;
+                background: #fff;
+            }
+            .mui_public li {
+                width: 100%;
+                border-bottom: 1px solid #ccc;
+            }
+            .mui_public li a {
+                display: block;
+                width: 100%;
+                padding: 5px 0;
+                cursor: pointer;
+            }
+            .mui_public li span {
+                display: block;
+                font-size: 0.8em;
+                color: #000;
+                padding: 2px 10px;
+            }
+            .mui_public li span:nth-of-type(2) {
+                color: #011080;
+                font-size: 0.7em;
+            }
+            .mui_public li span:nth-of-type(1) {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">行业动态</h1>
+        </header>
+        <div class="mui_public mui-content">
+            <ul>
+                $for i in privData['NEWS_LIST']:
+                <li>
+                    <a href="$makeUrl('/wap/news_details', {'id': i.id})">
+                        <span>$i.name</span>
+                        <span>日期：$i.createTime.strftime('%Y-%m-%d')</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,113 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+            }
+            .mui_qtlj {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_qtlj h3.mui_qtlj_title {
+                text-align: center;
+                margin-bottom: 0;
+                font-size: 0.7em;
+                color: #fff;
+                font-weight: normal;
+                background: #7A9CFF;
+                padding: 8px 0;
+            }
+            .mui_qtlj ul.qtj_ul1 li dl {
+                overflow: hidden;
+                margin: 0 auto;
+                background: #FEFBE6;
+                padding: 8px 0;
+            }
+            .mui_qtlj ul.qtj_ul1 li dl dd {
+                float: left;
+                width: 20%;
+                display: block;
+                text-align: center;
+                font-size: 0.7em;
+            }
+            .mui_qtlj ul.qtj_ul2 li {
+                margin: 0 auto;
+                width: 100%;
+                overflow: hidden;
+                border-bottom: 1px solid #ececec;
+            }
+            .mui_qtlj ul.qtj_ul2 li dl {
+                overflow: hidden;
+                margin: 0 auto;
+                background: #fff;
+                padding: 10px 0;
+            }
+            .mui_qtlj ul.qtj_ul2 li dl dd {
+                float: left;
+                width: 20%;
+                display: block;
+                text-align: center;
+                font-size: 0.7em;
+            }
+            .mui_qtlj ul.qtj_ul2 li dl:active {
+                background: #FE9D28;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon  mui-icon-back mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">期铜价</h1>
+        </header>
+        <div class="mui_qtlj mui-content">
+            <h3 class="mui_qtlj_title">2015-06-15 21:25:30</h3>
+            <ul class="qtj_ul1">
+                <li>
+                    <dl>
+                        <dd>名称</dd>
+                        <dd>现价</dd>
+                        <dd>最高价</dd>
+                        <dd>最低价</dd>
+                        <dd>涨跌幅</dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="qtj_ul2">
+                <li>
+                    <dl>
+                        <dd>电缆1</dd>
+                        <dd>51552</dd>
+                        <dd>51552</dd>
+                        <dd>32525</dd>
+                        <dd>+0.5%</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dd>电缆1</dd>
+                        <dd>51552</dd>
+                        <dd>51552</dd>
+                        <dd>32525</dd>
+                        <dd>+0.5%</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dd>电缆1</dd>
+                        <dd>51552</dd>
+                        <dd>51552</dd>
+                        <dd>32525</dd>
+                        <dd>+0.5%</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,47 @@
+$def with (privData)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+$:privData['render'].header(privData)
+<body>
+$:privData['render'].pageheader(privData)
+
+<h2>订单管理</h2>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <td align="right">
+            <form id="searchForm" action="$makeUrl('/admin/orders/search')" method="post" >
+                <input type="text" id="keywords" name="keywords" placeholder="关键字..." value="">
+                <input id="searchButton" type="submit" value="过 滤"/>
+            </form>
+        </td>
+
+    </tr>
+</table>
+<table width="800" border="0" cellspacing="0" cellpadding="1" class="list">
+    <tr>
+        <th>ID</th>
+        <th>所有者</th>
+        <th>询价方</th>
+        <th>创建时间</th>
+        <th>管理</th>
+    </tr>
+    $for i in privData['ORDERS_LIST']:
+    <tr>
+        <td align="center">$i.id</td>
+        <td align="center">$i.owner.name</td>
+        <td align="center">$i.customer</td>
+        <td align="center">$str(i.created_time)[:16]</td>
+        <td align="center">
+            <a href="$makeUrl('/admin/orders/delete',{'id':i.id})" onclick="return confirm('确认删除？')">删除</a>
+        </td>
+    </tr>
+</table>
+
+<nav class="navigation">
+    $:privData['PAGE_STRING']
+</nav>
+
+
+<div style="clear: both;"></div>
+</div>
+</body></html>

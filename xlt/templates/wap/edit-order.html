@@ -1,0 +1,273 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            .mui-table-view-cell::after {
+                left: 1px;
+            }
+            p {
+                margin-bottom: 0;
+            }
+            .mui_bjd7_top {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                padding: 10px;
+                border-bottom: 2px solid #0F39B1;
+            }
+            .mui_bjd7_top li:nth-of-type(1) {
+                float: left;
+                font-size: 0.8em;
+                padding: 5px 0;
+            }
+            .mui_bjd7_top li:nth-of-type(2) {
+                float: right;
+                font-size: 0.8em;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                background: #4E79F4;
+                color: #fff;
+                padding: 5px 15px;
+                letter-spacing: 0.1em;
+            }
+            .mui_bjd7_cont {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                margin-bottom: 51px;
+            }
+            .mui_bjd7_cont li.mui_bjd7_cont_li {
+                border-bottom: 1px solid #ccc;
+                overflow: hidden;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body {
+                width: 100%;
+                margin: 0 auto;
+            }
+            .mui_bjd7_cont .mui-checkbox input[type="checkbox"] {
+                top: 135px;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li {
+                padding: 8px 8px;
+                border-bottom: 1px solid #ccc;
+                overflow: hidden;
+                border-left: 1px solid #ccc;
+                letter-spacing: 0.1em;
+                font-size: 0.8em;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:last-child {
+                border-bottom: none;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:nth-of-type(3) p:nth-of-type(1) {
+                display: block;
+                color: #000;
+                float: left;
+                overflow: hidden;
+                padding: 5px 0;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:nth-of-type(3) span.mui_sspan {
+                display: block;
+                width: 70%;
+                border: 1px solid #ccc;
+                overflow: hidden;
+                padding: 5px;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:nth-of-type(3) p.mui_ssspan {
+                margin-bottom: 0px;
+                padding: 0;
+                display: block;
+                color: #000;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:nth-of-type(6) {
+                color: #D7484C;
+            }
+            .mui_bjd7_foot {
+                width: 100%;
+                z-index: 1000;
+                margin: 0 auto;
+                overflow: hidden;
+                background: #ccc;
+                position: fixed;
+                bottom: 0;
+            }
+            .mui_bjd7_foot li {} .mui_bjd7_foot li:nth-of-type(1) {
+                float: left;
+                height: 50px;
+                line-height: 50px;
+                padding: 0 15px;
+                color: #D7484C;
+                font-size: 0.9em;
+            }
+            .mui_bjd7_foot li:nth-of-type(2) {
+                float: right;
+            }
+            .mui_bjd7_foot li span {
+                display: block;
+                height: 35px;
+                font-size: 0.8em;
+                letter-spacing: 0.1em;
+                color: #D7484C;
+                line-height: 35px;
+                padding: 0 15px;
+                margin-top: 7px;
+                border: 1px solid #D7484C;
+                border-radius: 5px;
+                background: #FEFBE8;
+                float: left;
+                margin-right: 10px;
+            }
+            .mui_bjd7_foot li span:active {
+                background: #ccc;
+            }
+            #mui_bjd7 {
+                z-index: 999999;
+                display: none;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, .6);
+                position: fixed;
+                bottom: 0;
+            }
+            #mui_bjd7 .mui_bjd7_select {
+                width: 300px;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                background: #fff;
+                margin: auto;
+                margin-top: 50%;
+            }
+            #mui_bjd7 .mui_bjd7_select li {
+                border-bottom: 1px solid #ccc;
+                height: 45px;
+                line-height: 45px;
+            }
+            #mui_bjd7 .mui_bjd7_select li:nth-of-type(3) {
+                text-align: center;
+                border-bottom: none;
+            }
+            #mui_bjd7 .mui_bjd7_select .mui-radio input[type="radio"] {
+                top: 7px;
+            }
+            #mui_bjd7 .mui_bjd7_select li:nth-of-type(3):active {
+                background: #ccc;
+                border-radius: 0 0 5px 5px;
+                -webkit-border-radius: 0 0 5px 5px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon iconfont icon-back mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">报价单</h1>
+        </header>
+    <div class="mui-content">
+            <div class="mui_bjd7_top">
+            <ul>
+                <li>询价方：居家装饰公司</li>
+                <li>编辑</li>
+            </ul>
+        </div>
+        <div class="mui_bjd7_cont">
+            <ul>
+                <li class="mui-checkbox mui-left mui_bjd7_cont_li">
+                    <label>
+                        <div class="mui_bjd7_body">
+                            <ul>
+                                <li>裸电线_TJ铜绞线</li>
+                                <li>截面积：70mm²</li>
+                                <li>
+                                    厂标价：￥6500.00
+                                </li>
+                                <li>数&nbsp;&nbsp;&nbsp;量：
+                                    <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                        <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                        <input class="mui-numbox-input" type="number" value="5" />
+                                        <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                    </div>
+                                </li>
+                                <li>利润率：
+                                    <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                        <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                        <input class="mui-numbox-input" type="number" value="5" />
+                                        <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                    </div>
+                                </li>
+                                <li>小&nbsp;&nbsp;&nbsp;计：35000.00元</li>
+                                <li>备&nbsp;&nbsp;&nbsp;注：xxxxxxx</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input name="checkbox" type="checkbox">
+                </li>
+                <li class="mui-checkbox mui-left mui_bjd7_cont_li">
+                    <label>
+                        <div class="mui_bjd7_body">
+                            <ul>
+                                <li>裸电线_TJ铜绞线</li>
+                                <li>截面积：70mm²</li>
+                                <li>
+                                    国标价：￥6500.00
+                                </li>
+                                <li>数&nbsp;&nbsp;&nbsp;量：
+                                    <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                        <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                        <input class="mui-numbox-input" type="number" value="5" />
+                                        <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                    </div>
+                                </li>
+                                <li>利润率：
+                                    <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                        <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                        <input class="mui-numbox-input" type="number" value="5" />
+                                        <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                    </div>
+                                </li>
+                                <li>小&nbsp;&nbsp;&nbsp;计：35000.00元</li>
+                                <li>备&nbsp;&nbsp;&nbsp;注：xxxxxxx</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input name="checkbox" type="checkbox">
+                </li>
+            </ul>
+        </div>
+
+        <div class="mui_bjd7_foot">
+            <ul>
+                <li>
+                    总价：xxxx
+                </li>
+                <li>
+                    <span>提交报价单</span>
+
+                </li>
+            </ul>
+        </div>
+        <div id="mui_bjd7">
+            <div class="mui_bjd7_select">
+                <ul>
+
+                    <li class="mui-input-row mui-radio">
+                        <label>厂标价 ￥6543.00</label>
+                        <input name="radio1" type="radio" checked>
+                    </li>
+
+                    <li class="mui-input-row mui-radio">
+                        <label>国标价 ￥36963.00</label>
+                        <input name="radio1" type="radio">
+                    </li>
+                    <li class="mui_bjd7_wc">完成</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    </body>
+
+</html>

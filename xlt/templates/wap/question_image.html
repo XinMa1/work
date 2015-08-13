@@ -1,0 +1,143 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+<head>  
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+            }
+            li img {
+               width:100%; 
+            }
+            ul#img-ul{
+              margin-top:30%;
+              float: left;
+              width: 100%;
+            }
+            ul#img-ul li {
+             list-style:none;
+             float:left; 
+            }
+            ul#img-ul li:nth-child(1) {
+              margin-left:16%;
+            }
+            ul#img-ul li:nth-child(1) img {
+             margin-top:100px;
+             position: relative;
+            }
+            ul#img-ul li:nth-child(2) {
+              width:65%;
+            }
+            ul#img-ul li:nth-child(2) img{
+              margin-left:-30px;
+            }
+            ul#img-ul li:nth-child(3) {
+              margin-left:-60px;
+            }
+            ul#img-ul li:nth-child(3) img{
+              margin-top:100px;
+            }
+            #imgsrc{
+              
+            }
+            #xlt-home{
+               font-size:16px;
+               color:red;
+               line-height:27px;
+            }
+            ol{
+                margin-top:-1.5em;
+                margin-left:44%;
+                z-index:999;
+                position:relative;
+              }
+            ol li {
+              float: left;
+              width: 10px;
+              height: 10px;
+              margin: 5px;
+              background: #fff;
+           } 
+           #btn-left,#btn-right{
+             width:30px;
+             height:60px;
+           }
+          #block-ol{
+            float:left;
+           }
+        </style>
+    </head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+        <h1 class="mui-title">提问图片</h1>
+        <a id="xlt-home"  class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/home')">首页</a>
+    </header>
+    <div class="mui-content">
+        <ul id="img-ul">
+            <li>
+	       <img id="btn-left"  onclick="frontImage(this)" src="../../static/images/frontbtn.png"/>
+            </li>
+            <li>
+               <img id="imgsrc" src="$:privData['QUESTION_IMG'].img1"/>
+            </li>
+            <li>
+	       <img id="btn-right" onclick="nextImage(this)" src="../../static/images/nextbtn.png"/>
+           </li>
+        </ul>
+        <ol id="block-ol">
+            <li style="background:blue;"></li>
+            <li></li>
+            <li></li>
+       </ol>
+    </div>
+    <!--Luara图片切换骨架end-->
+    <script>
+	var index=0;
+	var imgarray=new Array()
+	imgarray[0]="$:privData['QUESTION_IMG'].img1";
+	imgarray[1]="$:privData['QUESTION_IMG'].img2";
+	imgarray[2]="$:privData['QUESTION_IMG'].img3";
+   
+    function nextImage(){
+		index +=1;
+		index %=3;
+    	document.getElementById("imgsrc").src=imgarray[index];
+		var olli = document.body.querySelectorAll('#block-ol li');
+        for (var i=0;i<olli.length;i++ )
+        {
+	     if (i==index)
+		{
+                   olli[i].style.background = "blue";
+                }
+             else{
+                   olli[i].style.background = "#fff";
+               }		
+        }
+    }
+	function frontImage(){
+		index -=1;
+		if(index <0){
+			index=2;
+		}
+    	document.getElementById("imgsrc").src=imgarray[index];
+		var olli = document.body.querySelectorAll('#block-ol li');
+		for (var i=0;i<olli.length;i++ )
+        {
+			console.log(i);
+			if (i==index)
+			{
+				olli[i].style.background = "blue";
+			}
+			else{
+				olli[i].style.background = "#fff";
+			}
+			
+        }
+    }
+    </script>
+</body>
+</html>
+

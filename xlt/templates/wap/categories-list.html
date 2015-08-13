@@ -1,0 +1,52 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+            }
+            .mui_hbjg1_cont {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_hbjg1_cont .mui-table-view-cell::after {
+                left: 0;
+            }
+            .mui_hbjg1_cont li a {
+                font-size: 0.8em;
+            }
+            #xlt-categories-home{
+                margin-top: 5px;
+                color: red;
+                font-size: 15px;
+            }          
+        </style>
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <a id="xlt-categories-home"  class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/home')">首页</a>
+            <h1 class="mui-title">现行价格</h1>
+        </header>
+        <div class="mui_hbjg1_cont mui-content">
+            <ul class="mui-table-view">
+                $for i in privData['CATEGORIES_LIST']:
+                <li class="mui-table-view-cell">
+                    $if not i.children.count():
+                        <a class="mui-navigate-right" href="$makeUrl('/wap/product_prices', {'category': i.id, 'order': privData['ORDER']})">
+                    $else:
+                        <a class="mui-navigate-right" href="$makeUrl('/wap/categories', {'parent': i.id, 'order': privData['ORDER']})">
+                    $i.name
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </body>
+
+</html>

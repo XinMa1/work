@@ -1,0 +1,184 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+                height: 100%;
+            }
+            .mui_bjd1 {
+                width: 94%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_bjd1 li.mui_bjd1_li {
+                background: #fff;
+                overflow: hidden;
+                margin: 7px 0;
+                border: 1px solid #ccc;
+            }
+            .mui_bjd1 .mui_bjd1_pic {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .mui_bjd1 .mui_bjd1_pic img {
+                width: 100%;
+                float: left;
+            }
+            .mui_bjd1 .mui_bjd1_pic span {
+                display: block;
+                text-align: center;
+                font-size: 0.7em;
+                background: #E6EAEB;
+                padding: 3px 0;
+            }
+            .mui_bjd1 .mui_bjd1_button {
+                width: 90%;
+                overflow: hidden;
+                margin: 0 auto;
+            }
+            .mui_bjd1 .mui_bjd1_button li h5 {
+                text-align: center;
+                display: block;
+                padding: 3px 0;
+            }
+            .mui_bjd1 .mui_bjd1_button li:nth-of-type(1) {
+                float: left;
+            }
+            .mui_bjd1 .mui_bjd1_button li:nth-of-type(2) {
+                float: right;
+            }
+            .mui_bjd1 .mui_bjd1_word {
+                width: 90%;
+                overflow: hidden;
+                margin: 5px auto;
+            }
+            .mui_bjd1 .mui_bjd1_word span:nth-of-type(1) {
+                display: block;
+                width: 50px;
+                float: left;
+                font-size: 0.8em;
+                text-align: center;
+            }
+            .mui_bjd1 .mui_bjd1_word span:nth-of-type(2) {
+                display: block;
+                word-wrap: break-word;
+                float: left;
+                width: calc(100% - 50px);
+                width: -webkit-calc(100% - 50px);
+            }
+            .mui_bjd1_foot {
+                width: 100%;
+                margin: 0 auto;
+                margin-top: 40px;
+                overflow: hidden;
+                background: #E1E1E1;
+                padding: 5px 0;
+            }
+            .mui_bjd1_foot li:nth-of-type(1) {
+                float: left;
+                font-size: 0.8em;
+                padding: 5px 6px;
+                color: #F84A4B;
+            }
+            .mui_bjd1_foot li:nth-of-type(2) {
+                float: right;
+                font-size: 0.8em;
+                background: #F84A4B;
+                padding: 5px 15px;
+                margin-right: 5px;
+                border-radius: 3px;
+                -webkit-border-radius: 3px;
+                color: #fff;
+            }
+            #xlt-confirmSelectO-home{
+                margin-top: 5px;
+                color: red;
+                font-size: 15px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon iconfont icon-back mui-pull-left" onclick="history.go(-1);"></a>
+            <a id="xlt-confirmSelectO-home"  class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/home')">首页</a>
+            <h1 class="mui-title">结算单</h1>
+        </header>
+        <div class="mui_bjd1 mui-content">
+            <ul>
+                <li class="mui_bjd1_li">
+                    <div class="mui_bjd1_pic">
+                        <img src="images/bjd.jpg" />
+                        <span>某某电缆</span>
+                    </div>
+                    <div class="mui_bjd1_button">
+                        <ul>
+                            <li>
+                                <h5>数量</h5>
+                                <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                    <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                    <input class="mui-numbox-input" type="number" value="5" />
+                                    <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                </div>
+                            </li>
+                            <li>
+                                <h5>利润率</h5>
+                                <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                    <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                    <input class="mui-numbox-input" type="number" value="5" />
+                                    <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mui_bjd1_word">
+                        <span>备注：</span><span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
+                    </div>
+                </li>
+                <li class="mui_bjd1_li">
+                    <div class="mui_bjd1_pic">
+                        <img src="images/bjd.jpg" />
+                        <span>某某电缆</span>
+                    </div>
+                    <div class="mui_bjd1_button">
+                        <ul>
+                            <li>
+                                <h5>数量</h5>
+                                <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                    <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                    <input class="mui-numbox-input" type="number" value="5" />
+                                    <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                </div>
+                            </li>
+                            <li>
+                                <h5>利润率</h5>
+                                <div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
+                                    <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                    <input class="mui-numbox-input" type="number" value="5" />
+                                    <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mui_bjd1_word">
+                        <span>备注：</span><span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="mui_bjd1_foot">
+            <ul>
+                <li>小计：xxx</li>
+                <li>生成报价单</li>
+            </ul>
+        </div>
+    </body>
+
+</html>

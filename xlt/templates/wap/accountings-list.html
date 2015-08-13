@@ -1,0 +1,70 @@
+$def with (privData)
+<!DOCTYPE html>
+<html>
+
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            html,
+            body {
+                background-color: #efeff4;
+                height: 100%;
+            }
+            .mui_reconciliation li {
+                font-size: 0.7em;
+                background: #E5E8EA;
+            }
+            .verified {
+                display: block;
+                background: #4C75FC;
+                width: 60px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                color: #fff;
+                border-radius: 3px;
+                float: left;
+                letter-spacing: 0.1em;
+            }
+            .datetime {
+                display: block;
+                float: right;
+                padding-right: 20px;
+            }
+            .not-verified {
+                display: block;
+                background: #FF6C00;
+                width: 60px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                color: #fff;
+                border-radius: 3px;
+                float: left;
+                letter-spacing: 0.1em;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <h1 class="mui-title">公司对账</h1>
+        </header>
+        <div class="mui_reconciliation mui-content">
+            <ul class="mui-table-view">
+            $for i in privData['ACCOUNTINGS_LIST']:
+                <li class="mui-table-view-cell">
+                    <a class="mui-navigate-right" href="$makeUrl('/wap/accounting_details', {'id': i.id})">
+                    $if i.status == 1:
+                        <span class="verified">已核对</span>
+                    $else:
+                        <span class="not-verified">未核对</span>
+                    <span class="datetime">日期：$i.createTime.strftime('%Y-%m')</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

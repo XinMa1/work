@@ -1,0 +1,270 @@
+/*home.html页面样式*/
+
+.xlt-home-font {
+	font-size: 15px;
+}
+.xlt-home-img img {
+	width: 100%;
+}
+/*自定义九宫格按钮按下后的前景和背景颜色*/
+
+.xlt-home-nine.mui-table-view.mui-grid-view.mui-grid-9.msw-home-grid9 {
+	background-color: #EFEFF3;
+	color: #FFFFFF;
+}
+/*下面三个式样设计完成换行，到第三行不再显示的效果*/
+
+#xlt-course-media-body .mui-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#xlt-star-course-desc {
+	position: relative;
+	line-height: 1.2em;
+	/* 3 times the line-height to show 3 lines */
+	
+	height: 3.5em;
+	overflow: hidden;
+	white-space: normal;
+}
+#xlt-star-course-desc:after {
+	content: "....";
+	font-weight: bold;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 0 20px 1px 45px;
+	background: url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
+}
+/*industry_news.html*/
+/*下面三个式样设计完成换行，到第三行不再显示的效果*/
+
+#xlt-news-course-media-body .mui-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#xlt-news-star-course-desc {
+	position: relative;
+	line-height: 1.2em;
+	/* 3 times the line-height to show 3 lines */
+	
+	height: 3.5em;
+	overflow: hidden;
+	white-space: normal;
+}
+#xlt-news-star-course-desc:after {
+	content: "....";
+	font-weight: bold;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 0 20px 1px 45px;
+	background: url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
+}
+/*message_list.html*/
+
+.xlt-message-list {
+	background: #96C3AF;
+	height: 30px;
+	margin-top: -14px;
+}
+.xlt-message-list div {
+	margin-top: -7px;
+}
+.oa-contact-cell.mui-table .mui-table-cell {
+	padding: 11px 1px;
+	vertical-align: middle;
+}
+.oa-contact-cell {
+	position: relative;
+	margin: -11px 0;
+}
+.oa-contact-avatar {
+	width: 75px;
+}
+.oa-contact-avatar img {
+	border-radius: 50%;
+}
+.oa-contact-content {
+	width: 100%;
+}
+.oa-contact-name {
+	float: left;
+	margin-left: -22px;
+}
+.xlt-message-line {
+	height: 48px;
+}
+.xlt-message-layout {
+	margin-top: -18px;
+}
+.xlt-message-color {
+	background: #EFEFF3;
+}
+.xlt-message-dist {
+	padding-top: 14px;
+}
+/*login.html登录界面*/
+
+.xlt-login-input {
+	width: 88%;
+	height: 40px;
+	margin-left: 30px;
+	margin-top: 5px;
+	border-radius: 5px;
+	font-size: 15px;
+}
+.xlt-login-input-vcode {
+	width: 66.6%;
+	height: 40px;
+	border-radius: 5px;
+	float: left;
+	font-size: 15px;
+}
+.xlt-login-input-vcode input {
+	border-radius: 5px;
+	height: 40px;
+	width: 150%;
+	font-size: 15px;
+}
+.xlt-login-input-vcodes {
+	width: 88%;
+	height: 40px;
+	margin-left: 30px;
+	margin-right: 80px;
+	margin-top: 5px;
+	font-size: 15px;
+}
+.xlt-login-vCode {
+	width: 30%;
+	height: 25px;
+	display: inline-block;
+	border-radius: 5px;
+	border-left: 1px solid #CCCCC;
+	margin-top: 8px;
+}
+.xlt-login-btn {
+	width: 88%;
+	height: 40px;
+	margin-left: 30px;
+	margin-right: 80px;
+	margin-top: 5px;
+	background-color: orange;
+	border-radius: 5px;
+	font-size: 18px;
+	color: white;
+}
+.xlt-login-registered {
+	margin-left: 30px;
+	margin-top: 5px;
+}
+/*register.html页面*/
+
+#xlt-re-register {
+	width: 100%;
+	height: 40px;
+	background-color: orange;
+	color: white;
+	margin-top: 10px;
+	border: none;
+}
+#xlt-re-vCode {
+	margin-top: 10px;
+}
+.xlt-re-div-vCode {
+	width: 70%;
+}
+#xlt-re-btn-vCode {
+	float: right;
+	margin-top: -35px;
+	padding-left: -60px;
+}
+#xlt-re-btn-vCode button {
+	width: 100%;
+	height: 40px;
+	margin-top: -5px;
+	background-color: orange;
+	color: white;
+}
+.xlt-re-vCode .mui-input-group {
+	margin-right: -20px;
+}
+#xlt-re-phoneNumber input {
+	margin-right: 40px;
+}
+#xlt-re-phoneNumber label {
+	width: 60px;
+	margin-left: 5px;
+}
+#xlt-re-vCode {
+	width: 80%;
+}
+#xlt-re-vCode label {
+	width: 60px;
+	margin: 10px 0px -40px 15px;
+	padding: 0;
+}
+#xlt-re-vCode input {
+	width: 55%;
+	margin-left: 20px;
+	padding: 0;
+}
+#xlt-re-password label {
+	width: 30%;
+}
+#xlt-re-passwordAgain label {
+	width: 30%;
+}
+/*details.html页面式样*/
+
+.xlt-myinfo-show-row {
+	list-style: none;
+	margin-left: 15px;
+	width: 100%;
+	border-bottom: 1px solid #6D6D70;
+	height: 50px;
+}
+.xlt-myinfo-show-row span {
+	margin-left: 10px;
+}
+.xlt-myinfo-show-row span,
+label {
+	line-height: 50px;
+}
+.xlt-contact-cell.mui-table .mui-table-cell {
+	vertical-align: middle;
+}
+.xlt-contact-avatar {
+	width: 100%;
+}
+.xlt-contact-avatar img {
+	border-radius: 50%;
+}
+.xlt-contact-content {
+	width: 100%;
+}
+.xlt-contact-name {
+	margin-right: 20px;
+	float: left;
+}
+.xlt-myinfo-show{
+	list-style: none;
+	margin-left: 39px!important;
+	width: 100%;
+}
+.xlt-myinfo-show-row1{
+	height:100px;
+	list-style: none;
+	margin-left: 15px;
+	width: 100%;
+	border-bottom: 1px solid #6D6D70;
+}
+.xlt-details-background{
+	/*background:url(../images/2.jpg);*/
+}
+.xlt-myinfo-show-row2{
+	height:188px;
+	list-style: none;
+	margin-left: 15px;
+	width: 100%;
+}

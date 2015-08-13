@@ -1,0 +1,630 @@
+﻿$def with (privData)
+<!DOCTYPE html>
+<html>
+
+    <head>
+        $:privData['render'].header(privData)
+        <style>
+            .mui-table-view-cell::after {
+                left: 1px;
+            }
+            .mui-bar-nav~.mui-content {
+                padding: 0;
+            }
+            p {
+                margin-bottom: 0;
+            }
+            .mui_bjd7_top_but {
+                font-size: 0.8em;
+                display: block;
+                margin-top: 8px;
+                padding: 5px 12px;
+            }
+            .mui_bjd7_top_but:active {
+                background: #ccc;
+            }
+            .mui_bjd7_main {
+                margin: 0 auto;
+                overflow: hidden;
+                width: 100%;
+                margin-top: 45px;
+                margin-bottom: 51px;
+            }
+            .mui_bjd7_top {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                border-bottom: 1px solid #ccc;
+            }
+            .mui_bjd7_top li {
+                float: right;
+                font-size: 0.8em;
+                padding: 5px 15px;
+                letter-spacing: 0.1em;
+                width: 100%;
+            }
+            .mui_bjd7_top li:nth-child(1) {
+                margin-top: 45px;
+            }
+            .mui_bjd7_top input {
+                margin-top: 5px;
+                width: 70%;
+                font-size: 1em;
+                border: none 0;
+                border: 1px solid #ccc;
+            }
+            .mui_bjd7_cont {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                margin-bottom:60px;
+            }
+            .mui_bjd7_cont label {
+                display: block;
+                overflow: hidden;
+            }
+            .mui_bjd7_cont li.mui_bjd7_cont_li {
+                border-bottom: 1px solid #ccc;
+                overflow: hidden;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body {
+                width: 100%;
+                margin: 0 auto;
+            }
+            .mui_bjd7_cont .mui-checkbox input[type="checkbox"] {
+                top: 135px;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li {
+                padding: 8px 8px;
+                border-bottom: 1px solid #ccc;
+                overflow: hidden;
+                letter-spacing: 0.1em;
+                font-size: 0.8em;
+            }
+            .mui_bjd7_cont li div.mui_bjd7_body li:last-child {
+                border-bottom: none;
+            }
+            .mui_bjd7_cont .mui_bjd7_cont_li dl {
+                position: absolute;
+                display: block;
+                top: 45%;
+                left: 10px;
+                overflow: hidden;
+            }
+            .mui_bjd7_cont .mui_bjd7_cont_li dl i {
+                font-size: 1.8em;
+            }
+            .mui_bjd7_cont .mui_bjd7_cont_li dl:active {
+                color: blue;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select {
+                width: 70%;
+                display: none;
+                border-radius: 5px;
+                position: absolute;
+                border: 1px solid #ccc;
+                -webkit-border-radius: 5px;
+                background: #fff;
+                z-index: 99999;
+                top: 10%;
+                margin: 0 15%;
+                overflow: hidden;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select li {
+                border-bottom: 1px solid #ccc;
+                height: 45px;
+                line-height: 45px;
+            }
+            .mui_bjd7_cont li .mui_bjd7_select .mui-radio input[type="radio"] {
+                top: 7px;
+            }
+            .mui_bjd7_foot {
+                width: 100%;
+                z-index: 1000;
+                margin: 0 auto;
+                overflow: hidden;
+                background: #ccc;
+                position: fixed;
+                bottom: 0;
+            }
+            .mui_bjd7_foot li.mui-checkbox input[type="checkbox"] {
+                top: 0px;
+            }
+            #mui_bjd7 {
+                z-index: 9998;
+                display: none;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, .6);
+                position: fixed;
+                bottom: 0;
+            }
+            .mui_bjd7_ul2 {
+                display: none;
+            }
+            select.seldiv {
+                width: 96%;
+                position: absolute;
+                -webkit-appearance: menulist-button;
+                height: 43px;
+                font-size:10px;
+                margin-top: 2px;
+                background-color: #fff;
+                padding: 0px 0px;
+                margin-top: -1.8em;
+                margin-bottom:0px;
+                margin-left:3px;
+            }
+            button.mui-btn.mui-btn-success,
+            button.mui-btn.mui-btn-primary {
+                float: left;
+                width: 50%;
+                border-radius: 0px;
+                padding: 4px 0px;
+                line-height: 40px;
+                top: 0px;
+            }
+            #footer a {
+                height: 40px;
+            }
+            div#add-bottom {
+                height: 10px;
+            }
+            .cancell-icon a {
+                font-size: 30px;
+            }
+            input#sheet-input {
+                margin-bottom: 0px;
+            }
+            #xlt-editPriceS-home {
+                margin-top: 5px;
+                color: red;
+                font-size: 15px;
+            }
+            .mui_bjd7_body {
+                border-left: 1px solid #ccc;
+            }
+            .mui-numbox {
+                height: 45px;
+            }
+            .mui-numbox .mui-numbox-input {
+                height: 45px;
+            }
+            #xlt-editPriceS-totalMoney {
+                padding: 10px 0 10px 30px;
+                border-bottom: 1px solid #ccc;
+            }
+            .mui_bjd7_xj input {
+                margin-left: 0px;
+            }
+            #xlt-editPirceS-right {
+                padding-left: 48px;
+            }
+            li #xlt-editPriceS-price {
+                line-height: 39px;
+            }
+            #xlt-last {
+                margin-bottom: 105px;
+            }
+            .xlt-numbox {
+                height: 45px;
+                float: left;
+                width: 100%;
+            }
+            .xlt-numbox .xlt-input-number {
+                height: 45px;
+                width:60px;
+                float: left;
+                border-radius: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                padding: 0px 2px;
+                text-align: center;
+                border: none;
+            }
+            .xlt-numbox .xlt-input-ratio {
+                height: 45px;
+                width:45px;
+                float: left;
+                border-radius: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                padding: 0px 2px;
+                text-align: center;
+                border: none;
+            }
+            .xlt-numbox .xlt-btn-minus,
+            .xlt-btn-plus {
+                height: 45px;
+                float: left;
+                width: 27px;
+            }
+            .xlt-numbox .xlt-btn-minus {
+                border-left: none;
+                border-bottom: none;
+                border-top: none;
+                border-radius: 0px 0px 0px 0px;
+                float: left;
+            }
+            .xlt-numbox .xlt-btn-plus {
+                border-radius: 0px 0px 0px 0px;
+                float: right;
+                border-right: none;
+                border-bottom: none;
+                border-top: none;
+            }
+            .xlt-span {
+                float: left;
+                line-height: 45px;
+            }
+            table{
+                width: 100%;
+            }
+            td{
+                border: 1px solid #ccc;
+                height: 45px;
+                text-align: center;
+                font-size:10px;
+            }
+            td.slect-price{
+                text-align: left;
+            }
+			input.model_input{
+                float: left;
+                padding: 0px 2px;
+                text-align: center;
+                border: none;
+				margin-bottom: 0px;
+				font-size: 12px;
+			}
+          input.input_select{
+              position:absolute;
+              width:85%;
+              margin-top:-1.3em;
+              font-size:12px;
+              height:35px;
+              border:none;
+              text-align:center;
+          }
+          .btn-price{
+              width:100%;
+              background-color:#4cd964;
+              padding: 2px 0px;
+              border: none;
+              height: 47px;
+              font-size: 12px;
+              border-radius: 0px; 
+          }
+          
+        </style>
+
+    </head>
+
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="history.go(-1);"></a>
+            <a id="xlt-editPriceS-home" class="mui-icon iconfont icon-bianji mui-pull-right" href="$makeUrl('/wap/home')">首页</a>
+            <h1 class="mui-title">编辑报价单</h1>
+        </header>
+        <div id="content">
+            <form action="$makeUrl('/wap/save_price_sheet')" method="POST" enctype="multipart/form-data">
+                <div class="mui_bjd7_top">
+                    <ul>
+                        <li>
+                            <span>
+                          <span style="margin-left: 15px;">询价方：</span>
+                            <input onkeypress="CheckInfo" id="sheet-input" type="text" name="customer" value='$:privData['ORDER'].customer'/>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                          <span style="margin-left: 15px;">合&nbsp;&nbsp;&nbsp;计：</span>
+                             <input id="total" type="text" readonly="true" value="" style="margin-bottom: 0px;font-size:14px;"/>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui_bjd7_cont">
+                    $ total = 0
+                    $ subtotal = 0
+                    <ul>
+                    $for i in privData['DETAILS']:
+                        $ subtotal = i.count*i.price*(1.0+i.ratio)
+                        $ total += subtotal
+                        $ st =str(i.product.category.name) + '   '+str(i.product.diameter)
+                        $ sratio = i.ratio*100
+                        <li class="mui-checkbox mui-left mui_bjd7_cont_li">
+                            <dl class="cancell-icon">
+                                <a class="mui-icon mui-icon-trash" href="$makeUrl('/wap/delete_order_details', {'id': i.id})" onclick="return confirm('确认删除？')"></a>
+                            </dl>
+                            <div id="xlt-editPirceS-right" style="font-size:10px;">
+                                <div class="mui_bjd7_body">
+                                    <table>     
+                                        <tr>
+                                            <td>型&nbsp;&nbsp;&nbsp;号</td>
+                                            <td style="border-right:none;" colspan="7">
+                                                <input type="text" value="$i.name" id="can_$i.id" name="can_$i.id" class="model_input" oninput=""  onchange="setValue(this.id);"/>
+                                                <input type="text" style="display:none;"  id="name_$i.id" name="name_$i.id" value="$i.product.category.name"/>
+                                                <input type="text" style="display:none;"  id="diameter_$i.id" name="diameter_$i.id" value="$i.product.diameter"/>
+                                                <script type="text/javascript">
+                                                   function setValue(name){
+                                                     items= name.split('_');
+                                                    var invalue= document.getElementById(name).value;
+                                                    var vs=trim(invalue).split(' ');
+                                                    var first=vs[0];
+                                                    var last =vs[vs.length-1];
+                                                    var newvalue =first+"   "+last;
+                                                    document.getElementById(name).value=newvalue;
+                                                    var v1=document.getElementById('name_'+items[1]).value;
+                                                    var v2=document.getElementById('diameter_'+items[1]).value;
+                                                   }   
+                                                </script>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="jia_$i.id">价&nbsp;&nbsp;&nbsp;格</td>
+                                            <td id="zi_$i.id" style="display:none">
+                                                <button id="btn_$i.id"type="button" onclick="backSelect(this.id);"  class="btn-price">自定价</button>
+                                            </td>
+                                            <td class="slect-price" colspan="3">
+                                            <div style="position:relative;">
+                                                <select style="border:none;display:block;"  id="price_$i.id" class="seldiv" name="price_$i.id"  onchange="changeInput(this.id);select_price(this.id);">
+                                                    <option value="$i.product.price1" 
+                                                    $if i.price == i.product.price1: 
+                                                        selected = "selected" 
+                                                    >厂标$i.product.price1</option>
+                                                    <option value="$i.product.price2"
+                                                    $if i.price == i.product.price2: 
+                                                        selected = "selected" 
+                                                    >国标$i.product.price2</option>
+                                                    <option value="$i.id">自定价</option>
+                                                </select> 
+                                                <input style="display:none;" colspan="3" type="text" name="op1_$i.id" id="op1_$i.id" value="$i.product.price1"/>
+                                                <input style="display:none;" colspan="3" type="text" name="op2_$i.id" id="op2_$i.id" value="$i.product.price2"/>
+                                                <input style="display:none;" colspan="3"  type="text" onchange="valueChange(this.id);" id="input_$i.id" name="input_$i.id" class="input_select" value="0">
+                                                <input style="display:none;" colspan="3" type="text" name="bool_$i.id" id="bool_$i.id" value="$i.flag"/>
+                                                <script type="text/javascript">
+                                                   cc=$i.id;
+                                                    function tochange(){
+                                                       var selects = document.getElementsByTagName('select');
+                                                        for(var j= 0;j<selects.length;j++){
+                                                            var tid =document.getElementById(selects[j].id);
+                                                            lists = tid.id.split('_');
+                                                            var tinput =document.getElementById('input_'+lists[1]);
+                                                            var tvalue= tid.value;
+                                                            if(tinput.value!=="0"){
+                                                               continue;
+                                                             }else{
+                                                               tinput.value = tvalue;
+                                                             }
+                                                          }
+                                                        }      
+                                                   function showWhat(){
+                                                      var option1 = document.getElementById('op1_$i.id');
+                                                      var option2 = document.getElementById('op2_$i.id');
+                                                      var price= $i.price;
+                                                      var oldname = '$i.product.category.name'+"   "+'$i.product.diameter';
+                                                      var name = '$i.name';
+                                                      tochange();
+                                                      if('$i.flag'=='True') {
+                                                        document.getElementById('price_$i.id').style.display='none';
+                                                        document.getElementById('input_$i.id').style.display='block';
+                                                        document.getElementById('jia_$i.id').style.display='none';
+                                                        document.getElementById('zi_$i.id').style.display='table-cell';
+                                                        document.getElementById('btn_$i.id').style.backgroundColor='#fff';
+                                                        document.getElementById('input_$i.id').value=price;
+                                                        document.getElementById('btn_$i.id').onclick="";
+                                                      }else{
+                                                        document.getElementById('price_$i.id').style.display='block';
+                                                        document.getElementById('input_$i.id').style.display='none';
+                                                        document.getElementById('jia_$i.id').style.display='table-cell';
+                                                        document.getElementById('zi_$i.id').style.display='none';
+                                                        document.getElementById('btn_$i.id').style.backgroundColor='#fff';
+                                                      }
+                                                   }
+                                                   window.onload = showWhat();
+                                                </script>
+                                            </div> 
+                                            </td>
+                                            
+                                            <td>数&nbsp;&nbsp;&nbsp;量</td>
+                                            <td>
+                                                <div class="xlt-numbox">
+                                                    <button id="minus-count-$i.id" class="xlt-btn-minus" type="button" onclick="minus_count(this.id);">-</button>
+                                                    <input class="xlt-input-number" style="font-size:12px;" id="count_$i.id" name="count_$i.id" type="number" value="$i.count" oninput="count_change(this.id);" />
+                                                    <button id="plus-count-$i.id" class="xlt-btn-plus" type="button" onclick="plus_count(this.id);">+</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>利润率</td>
+                                            <td colspan="3">
+                                                <div class="xlt-numbox">
+                                                    <button id="minus-ratio-$i.id" class="xlt-btn-minus" type="button" onclick="minus_ratio(this.id);">-</button>
+                                                    <input class="xlt-input-ratio" id="ratio_$i.id" style="font-size:12px;" name="ratio_$i.id" type="text" value="$sratio" oninput="ratio_change(this.id);" />
+                                                    <button id="plus-ratio-$i.id" class="xlt-btn-plus" type="button" onclick="plus_ratio(this.id);">+</button>
+                                                </div>
+                                            </td>
+                                            <td>总&nbsp;&nbsp;&nbsp;价</td>
+                                            <td> 
+                                                <input id="subtotal_$i.id" name="subtotal" type="text" value="$subtotal" readOnly="true" style="width:120px;margin-bottom: 0px;border: none;font-size: 12px;" /> 
+                                            </td> 
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <table>
+                        <tr>
+                            <td style="border-top: none;">备&nbsp;&nbsp;&nbsp;注</td>
+                            <td style="border-top: none;">
+                                <input id="remarks" type="text" name="description" value="$:privData['ORDER'].description" style="margin-bottom: 0px;border: none;font-size:14px;" />
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td>总&nbsp;&nbsp;&nbsp;计</td>
+                            <td>
+                                <input id="htotal" type="text" readonly="true" value="$total" onchange="setTotal(this);"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <input name="id" type="hidden" value="$:privData['ORDER'].id" />
+                </div>
+                    <nav id="footer" class="mui-bar mui-bar-tab">
+                    <button class="mui-btn mui-btn-success" name="add">新&nbsp;&nbsp;增</button>
+                    <button id="save" class="mui-btn mui-btn-primary" name="save" onclick="callOnchange();">保&nbsp;&nbsp;存</button>
+                    </nav>
+                </div>
+            </form>
+        </div>
+    </body>
+    <script>
+       function setTotal(){
+           var totalm = document.getElementById('htotal');
+           document.getElementById('total').value=totalm.value;
+       }
+       window.onload=setTotal();
+       function trim(param) {
+          if ((vRet = param) == '') { return vRet; }
+           while (true) {
+             if (vRet.indexOf (' ') == 0) {
+               vRet = vRet.substring(1, parseInt(vRet.length));
+             } else if ((parseInt(vRet.length) != 0) && (vRet.lastIndexOf (' ') == parseInt(vRet.length) - 1)) {
+              vRet = vRet.substring(0, parseInt(vRet.length) - 1);
+             } else {
+                return vRet;
+             }
+           }
+       }
+        //  调用
+        function callOnchange(){
+           inputs= document.getElementsByTagName('input');
+           for(var i=0;i<inputs.length;i++){
+              items=inputs[i].id.split('_'); 
+              if(items[0]=='can'){
+               setValue(inputs[i].id);
+              }
+            }   
+        }
+        document.onkeydown = keyDownSearch;
+
+        function valueChange(name){
+          var items = name.split('_');
+          price=parseInt(document.getElementById(name).value);
+          update_data(items[1],name);         
+        }
+
+        function changeInput(name){
+         var selectItem = document.getElementById(name);
+         selectValue = selectItem.value;
+         var items = name.split('_');
+         var nowId= items[1];
+         if(selectValue ==nowId){
+            document.getElementById("input_"+items[1]).style.display="block";
+            document.getElementById(name).style.display="none";
+            document.getElementById('jia_'+items[1]).style.display="none";
+            document.getElementById('zi_'+items[1]).style.display="table-cell";
+            document.getElementById('bool_'+items[1]).value="True";
+         }else{
+            document.getElementById('bool_'+items[1]).value="False";
+         }
+         document.getElementById('input_' + items[1]).value=selectValue;
+        }
+        
+       function backSelect(name){
+         var items = name.split('_');
+         document.getElementById("jia_"+items[1]).style.display="table-cell";
+         document.getElementById('zi_'+items[1]).style.display="none";
+         document.getElementById('price_'+items[1]).style.display="block";
+         document.getElementById('input_'+items[1]).style.display="none";
+       }
+        //禁掉回车键的功能 
+        function keyDownSearch(e) {
+            // 兼容FF和IE和Opera    
+            var theEvent = e || window.event;
+            var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+            if (code == 13) {
+                return false;
+            }
+            return true;
+        }
+        var minus_count = function(name) {
+            var items = name.split('-')
+            var count = document.getElementById('count_' + items[2]);
+            if (count.value > 1) {
+                count.value = parseInt(count.value) - 1;
+            }
+            update_data(items[2],null);
+        };
+        var plus_count = function(name) {
+            var items = name.split('-')
+            var count = document.getElementById('count_' + items[2]);
+            console.log(count.value);
+            if (count.value < 1000) {
+                count.value = parseInt(count.value) + 1;
+            }
+            update_data(items[2],null);
+        };
+        var minus_ratio = function(name) {
+            var items = name.split('-')
+            var ratio = document.getElementById('ratio_' + items[2]);
+            ratio.value = (parseFloat(ratio.value) - 1).toFixed(1);
+            update_data(items[2],null);
+        };
+        var plus_ratio = function(name) {
+            var items = name.split('-')
+            var ratio = document.getElementById('ratio_' + items[2]);
+            if (ratio.value < 100) {
+                ratio.value = (parseFloat(ratio.value) + 1).toFixed(1);
+            }
+            update_data(items[2],null);
+        };
+        var select_price = function(name) {
+            var items = name.split('_');
+            price=document.getElementById(name).value;
+            update_data(items[1],name);
+            document.getElementById('input_'+items[1]).value=price;
+        };
+        var ratio_change = function(name) {
+            var items = name.split('_')
+            update_data(items[1],null);
+        };
+        var count_change = function(name) {
+            var items = name.split('_')
+            update_data(items[1],null);
+        };
+        var update_data = function(name,realname) {
+            if(realname!=null){
+              price = document.getElementById(realname).value;
+            }
+            if(realname==null){
+              price=getshow(name);
+            }
+            var ratio = document.getElementById('ratio_' + name).value;
+            var count = document.getElementById('count_' + name).value;
+            var lratio =(1+parseFloat(ratio)/100).toFixed(3);
+            var subtotal = parseInt(price) * parseInt(count) *lratio;
+            document.getElementById('subtotal_' + name).value = subtotal.toFixed(1);
+            var total = 0;
+            var subtotals = document.getElementsByName('subtotal');
+            for (var i = 0; i < subtotals.length; i++) {
+                total += parseFloat(subtotals[i].value);
+            }
+            document.getElementById('total').value = total.toFixed(1);
+        };
+        function getshow(name){
+         var sel = document.getElementById('price_'+name).style.display; 
+         var inp = document.getElementById('input_'+name).style.display;
+         if(sel=='block'){
+             var price = document.getElementById('price_'+name).value;
+             return price;
+         } 
+         if(inp=='block'){
+          var price = document.getElementById('input_'+name).value;
+          return price; 
+         }
+        }
+    </script>
+
+</html>
